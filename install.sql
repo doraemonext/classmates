@@ -17,3 +17,8 @@ speciality TEXT,
 life MEDIUMTEXT,
 content MEDIUMTEXT
 );
+
+CREATE TABLE index_motto (
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+content TEXT
+);
