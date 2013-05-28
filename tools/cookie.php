@@ -29,7 +29,7 @@ if (isset($_COOKIE['userCookie'])) {
     unset($_SESSION['userId']);
 }
 
-/*$_SESSION['userCookie'] = 'xxx';
-$_SESSION['userId'] = 1;*/
+$_SESSION['userCookie'] = 'xxx';
+$_SESSION['userId'] = 1;
 
 ?>

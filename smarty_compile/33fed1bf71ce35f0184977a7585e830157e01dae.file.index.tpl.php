@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-05-28 21:17:51
+<?php /* Smarty version Smarty-3.1.13, created on 2013-05-28 21:28:03
          compiled from "smarty/index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:24041766851a217c4ea4903-46274097%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '33fed1bf71ce35f0184977a7585e830157e01dae' => 
     array (
       0 => 'smarty/index.tpl',
-      1 => 1369747070,
+      1 => 1369747592,
       2 => 'file',
     ),
   ),
@@ -55,8 +55,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                     <?php }else{ ?>
                         <div class="row">
                             <div class="span1">
-                                <a href="images/tourist.png" class="thumbnail">
-                                    <img src="images/tourist.png" alt="">
+                                <a href="#" class="thumbnail">
+                                    <img id="index_username_avatar" src="images/tourist.png" alt="">
                                 </a>
                             </div>
                             <div class="span3">

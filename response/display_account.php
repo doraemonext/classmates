@@ -12,10 +12,10 @@ require_once dirname(__FILE__).'/../tools/cookie.php';
 
 session_start();
 
-/*if (!isset($_COOKIE['userCookie'])) {
+if (!isset($_COOKIE['userCookie'])) {
     echo '-1';  // 表示cookie出错，无法得到用户名
     exit();
-}*/
+}
 
 try {
     $db = mysqlConnect($_config['db']['host'], $_config['db']['username'],

@@ -24,8 +24,8 @@
                     {else}
                         <div class="row">
                             <div class="span1">
-                                <a href="images/tourist.png" class="thumbnail">
-                                    <img src="images/tourist.png" alt="">
+                                <a href="#" class="thumbnail">
+                                    <img id="index_username_avatar" src="images/tourist.png" alt="">
                                 </a>
                             </div>
                             <div class="span3">

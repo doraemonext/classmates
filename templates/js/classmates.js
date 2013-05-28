@@ -1,7 +1,7 @@
 
 window.onload = function() {
     navigationMotto();
-    displayUsername();
+    displayAccount();
 }
 
 // 在页面加载后显示导航条上的座右铭
@@ -35,21 +35,21 @@ function navigationMottoResult(xmlHttp) {
     }
 }
 
-// 当用户登录的情况下，更新用户名
-function displayUsername() {
+// 当用户登录的情况下，更新用户名及头像
+function displayAccount() {
     var xmlHttp = getXmlHttpObject();
     if (xmlHttp == null) {
         window.location.href = "error.php?content=您的浏览器不支持 HTTP Request，请您升级浏览器后再访问 ^_^";
         return;
     }
     
-    var url = "response/display_username.php";
+    var url = "response/display_account.php";
     url = url + "?sid=" + Math.random();
-    xmlHttp.onreadystatechange = function() { displayUsernameResult(xmlHttp); };
+    xmlHttp.onreadystatechange = function() { displayAccountResult(xmlHttp); };
     xmlHttp.open("GET", url, true);
     xmlHttp.send(null);
 }
-function displayUsernameResult(xmlHttp) {
+function displayAccountResult(xmlHttp) {
     if (xmlHttp.readyState == 4) {
         var username = xmlHttp.responseText;
         if (username == -1) {
@@ -58,6 +58,8 @@ function displayUsernameResult(xmlHttp) {
             var root = document.getElementById('index_username');
             var text = document.createTextNode(username);
             root.appendChild(text);
+            
+            
         }
     }
 }
