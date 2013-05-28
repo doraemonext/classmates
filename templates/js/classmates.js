@@ -1,10 +1,10 @@
-// Index
 
+// 在页面加载后显示导航条上的座右铭
 window.onload = function navigationMotto()
 {
     var xmlHttp = getXmlHttpObject();
     if (xmlHttp == null) {
-        navigationMottoError('您的浏览器不支持 HTTP Request', '请升级浏览器后再访问本站 ^_^');
+        navigationMottoError(["您的浏览器不支持 HTTP Request", "请升级浏览器后再访问本站 ^_^"]);
         return;
     }
     
@@ -14,6 +14,7 @@ window.onload = function navigationMotto()
     xmlHttp.open("GET", url, true);
     xmlHttp.send(null);
 }
+// 导航条上座右铭的ajax回调函数
 function navigationMottoResult(xmlHttp) {
     if (xmlHttp.readyState == 4) {
         var info = JSON.parse(xmlHttp.responseText);
@@ -28,23 +29,21 @@ function navigationMottoResult(xmlHttp) {
         }
     }
 }
-function navigationMottoError(error_message_1, error_message_2) 
+// 当XMLHttpRequest()请求失败时，返回错误信息
+function navigationMottoError(error_message)
 {
     var err_root = document.getElementById('navigationMotto');
     var err_ul = document.createElement('ul');
-    var err_li_1 = document.createElement('li');
-    var err_text_1 = document.createTextNode(error_message_1);
-    var err_li_2 = document.createElement('li');
-    var err_text_2 = document.createTextNode(error_message_2);
     err_root.appendChild(err_ul);
-    err_ul.appendChild(err_li_1);
-    err_ul.appendChild(err_li_2);
-    err_li_1.appendChild(err_text_1);
-    err_li_2.appendChild(err_text_2);
+    for (var i = 0; i < error_message.length; i++) {
+        var err_li = document.createElement('li');
+        var err_text = document.createTextNode(error_message[i]);
+        err_ul.appendChild(err_li);
+        err_li.appendChild(err_text);
+    }
 }
 
 // Ajax getXmlHttpObject function
-
 function getXmlHttpObject()
 {
     var xmlHttp = null;
