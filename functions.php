@@ -54,4 +54,35 @@ function showFooter($title)
     $ui->display('footer.tpl');
 }
 
+/*
+ * 连接数据库的初始化工作
+ */
+function mysqlConnect($host, $username, $password, $dbname) {
+    @ $db = new mysqli($host, $username, $password, $dbname);
+    //if (mysqli_connect_errno()) {
+    if (1) {
+        throw new Exception("连接数据库时发生错误", MYSQL_ERROR);
+        exit;
+    }
+    return $db;
+}
+
+/*
+ * 打印异常信息（直接打开error.php页面并显示）
+ */
+function echoException($e) {
+    $code = $e->getCode();
+    $msg = $e->getMessage();
+    $file = $e->getFile();
+    $line = $e->getLine();
+    echo '<meta http-equiv=refresh content=0;url="error.php?code='.$code.'&msg='.$msg.'&file='.$file.'&line='.$line.'">';
+}
+
+/*
+ * 输出error log文件
+ */
+function printLog($log) {
+    file_put_contents('error.log', date("Y-m-d H:i:s"). " " . $log. "\r\n", FILE_APPEND | LOCK_EX);
+}
+
 ?>

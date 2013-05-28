@@ -7,11 +7,11 @@
             </div>
                 <div class="span4">
                     <br />
-                    {if $validUser == ""}
+                    {if $validUser == ''}
                         <div class="row">
                             <div class="span1">
-                                <a href="images/tourist.png" class="thumbnail">
-                                    <img src="images/tourist.png" alt="">
+                                <a href="{$images_tourist}" class="thumbnail">
+                                    <img src="images/tourist.png" />
                                 </a>
                             </div>
                             <div class="span3">

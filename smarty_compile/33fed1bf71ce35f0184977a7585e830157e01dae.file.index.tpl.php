@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-05-28 07:35:19
+<?php /* Smarty version Smarty-3.1.13, created on 2013-05-28 15:03:42
          compiled from "smarty/index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:24041766851a217c4ea4903-46274097%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '33fed1bf71ce35f0184977a7585e830157e01dae' => 
     array (
       0 => 'smarty/index.tpl',
-      1 => 1369697703,
+      1 => 1369722632,
       2 => 'file',
     ),
   ),
@@ -22,6 +22,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'title' => 0,
     'subtitle' => 0,
     'validUser' => 0,
+    'images_tourist' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -39,8 +40,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                     <?php if ($_smarty_tpl->tpl_vars['validUser']->value==''){?>
                         <div class="row">
                             <div class="span1">
-                                <a href="images/tourist.png" class="thumbnail">
-                                    <img src="images/tourist.png" alt="">
+                                <a href="<?php echo $_smarty_tpl->tpl_vars['images_tourist']->value;?>
+" class="thumbnail">
+                                    <img src="images/tourist.png" />
                                 </a>
                             </div>
                             <div class="span3">
