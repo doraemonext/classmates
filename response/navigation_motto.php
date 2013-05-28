@@ -8,10 +8,14 @@
 
 require '../config.php';
 
+$return_value = array();
 @ $db = new mysqli($_config['db']['host'], $_config['db']['username'], 
                    $_config['db']['password'], $_config['db']['dbname']);
+
 if (mysqli_connect_errno()) {
-    echo '<li>数据库读取错误</li><li>请联系管理员进行维护</li>';
+    array_push($return_value, '数据库读取错误');
+    array_push($return_value, '请联系管理员进行维护');
+    echo json_encode($return_value);
     exit;
 }
 
@@ -19,11 +23,10 @@ $query = 'SET NAMES UTF8';
 $db->query($query);
 $query = 'SELECT `content` FROM `index_motto` ORDER BY `id`';
 $result = $db->query($query);
-$return_value = "";
 
 while ($row = $result->fetch_object()) {
-    $return_value .= '<li>' . $row->content . '</li>';
+    array_push($return_value, $row->content);
 }
 
-echo addslashes($return_value);
+echo json_encode($return_value);
 ?>

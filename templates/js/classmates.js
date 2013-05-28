@@ -15,11 +15,17 @@ window.onload = function navigationMotto()
     xmlHttp.send(null);
 }
 function navigationMottoResult(xmlHttp) {
-    if (xmlHttp.readyState == 4 || xmlHttp.readyState == "complete") {
+    if (xmlHttp.readyState == 4) {
+        var info = JSON.parse(xmlHttp.responseText);
         var root = document.getElementById('navigationMotto');
         var ul = document.createElement('ul');
         root.appendChild(ul);
-        ul.innerHTML = xmlHttp.responseText;
+        for (var i = 0; i < info.length; i++) {
+            var li = document.createElement('li');
+            var text = document.createTextNode(info[i]);
+            ul.appendChild(li);
+            li.appendChild(text);
+        }
     }
 }
 function navigationMottoError(error_message_1, error_message_2) 
