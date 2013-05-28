@@ -22,3 +22,9 @@ CREATE TABLE index_motto (
 id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 content TEXT
 );
+
+CREATE TABLE options (
+options_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+options_name CHAR(30) NOT NULL,
+options_value TEXT
+);
