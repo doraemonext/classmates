@@ -1,7 +1,7 @@
 CREATE TABLE classmates (
 id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 password CHAR(50) NOT NULL,
-avatar LONGBLOB,
+avatar TEXT,
 name CHAR(20) NOT NULL,
 birthday DATE,
 sex TINYINT NOT NULL,

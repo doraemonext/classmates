@@ -16,7 +16,7 @@ function getNewSmarty()
     $ui->setTemplateDir("smarty");
     $ui->setCacheDir("cache");
     $ui->setConfigDir("configs");
-    // $ui->debugging = false;
+    //$ui->debugging = true;
     $ui->assign('pageLocated', 'UNKNOWN');
     
     return $ui;
@@ -57,20 +57,30 @@ function showFooter($title)
 /*
  * 连接数据库的初始化工作
  */
-function mysqlConnect($host, $username, $password, $dbname) {
+function mysqlConnect($host, $username, $password, $dbname) 
+{
     @ $db = new mysqli($host, $username, $password, $dbname);
-    //if (mysqli_connect_errno()) {
-    if (1) {
+    if (mysqli_connect_errno()) {
         throw new Exception("连接数据库时发生错误", MYSQL_ERROR);
         exit;
     }
     return $db;
 }
 
+function getOption($_options, $name) {
+    while ($row = $_options->fetch_object()) {
+        if ($row->options_name == $name) {
+            return $row->options_value;
+        }
+    }
+    throw new Exception("程序取得了一个无效选项", GET_OPTIONS_ERROR);
+}
+
 /*
  * 打印异常信息（直接打开error.php页面并显示）
  */
-function echoException($e) {
+function echoException($e) 
+{
     $code = $e->getCode();
     $msg = $e->getMessage();
     $file = $e->getFile();
@@ -81,8 +91,21 @@ function echoException($e) {
 /*
  * 输出error log文件
  */
-function printLog($log) {
+function printLog($log) 
+{
     file_put_contents('error.log', date("Y-m-d H:i:s"). " " . $log. "\r\n", FILE_APPEND | LOCK_EX);
+}
+
+/*
+ * Cookie加密解密算法
+ */
+function encrypt($decStr, $strKey)
+{
+    return base64_encode(mcrypt_encrypt(MCRYPT_DES, $strKey, $decStr, MCRYPT_MODE_CBC));
+}  
+function decrypt($encStr, $strKey)
+{
+    return mcrypt_decrypt(MCRYPT_DES, $strKey, base64_decode($encStr), MCRYPT_MODE_CBC);
 }
 
 ?>

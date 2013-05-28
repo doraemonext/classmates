@@ -17,9 +17,16 @@
                     错误信息：
                 </p>
                 <div class="alert alert-error" id="showException">
-                    Exception {$code}: {$msg} <br />
-                    in {$file} on line {$line}.
+                    {if $error_type == 'plain'}
+                        {$content}
+                    {else}
+                        Exception {$code}: {$msg} <br />
+                        in {$file} on line {$line}.
+                    {/if}
                 </div>
+                <a class="btn btn-primary btn-large" href="./index.php">
+                    返回主页
+                </a>
             </div>
         </div>
         <hr />

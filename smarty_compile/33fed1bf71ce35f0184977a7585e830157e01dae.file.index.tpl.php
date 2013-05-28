@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-05-28 15:03:42
+<?php /* Smarty version Smarty-3.1.13, created on 2013-05-28 21:17:51
          compiled from "smarty/index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:24041766851a217c4ea4903-46274097%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '33fed1bf71ce35f0184977a7585e830157e01dae' => 
     array (
       0 => 'smarty/index.tpl',
-      1 => 1369722632,
+      1 => 1369747070,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   array (
     'title' => 0,
     'subtitle' => 0,
-    'validUser' => 0,
+    'uid' => 0,
     'images_tourist' => 0,
   ),
   'has_nocache_code' => false,
@@ -37,7 +37,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             </div>
                 <div class="span4">
                     <br />
-                    <?php if ($_smarty_tpl->tpl_vars['validUser']->value==''){?>
+                    <?php if ($_smarty_tpl->tpl_vars['uid']->value==-1){?>
                         <div class="row">
                             <div class="span1">
                                 <a href="<?php echo $_smarty_tpl->tpl_vars['images_tourist']->value;?>
@@ -60,8 +60,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                                 </a>
                             </div>
                             <div class="span3">
-                                <p><strong><?php echo $_smarty_tpl->tpl_vars['validUser']->value;?>
- 您好，欢迎您的使用<br /><br /></strong></p>
+                                <p><strong><span id="index_username"></span>，欢迎您的使用<br /><br /></strong></p>
                                 <a class="btn btn-success" href="#"> 个人信息管理</a>
                                 &nbsp;&nbsp;
                                 <a class="btn btn-primary" href="#"> 安全退出</a>

@@ -6,7 +6,7 @@
  * @author     Doraemonext
  */
 
-require '../config.php';
+require_once dirname(__FILE__).'/../config.php';
 
 $return_value = array();
 @ $db = new mysqli($_config['db']['host'], $_config['db']['username'], 

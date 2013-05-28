@@ -1,45 +1,37 @@
 <?php
 
-require_once 'config.php';
-require_once 'functions.php';
-
-$userUid = '';
-$title = '';
-$subtitle = '';
+require_once dirname(__FILE__).'/config.php';
+require_once dirname(__FILE__).'/functions.php';
+require_once dirname(__FILE__).'/tools/get_options.php';
+require_once dirname(__FILE__).'/tools/cookie.php';
 
 session_start();
-$cookieKey = sha1($_config['safe']['rand_cookie_key']);
-if (isset($_COOKIE[$cookieKey])) {
-    $userUid = $_COOKIE[$cookieKey];
-}
 
-showHeader($_config['website']['title'], $_config['website']['subtitle']);
+$_SESSION['options'] = $_options;
 
+// 取得标题和副标题信息
 try {
-    $db = mysqlConnect($_config['db']['host'], $_config['db']['username'],
-                       $_config['db']['password'], $_config['db']['dbname']);
-    $query = 'SET NAMES UTF8';
-    $db->query($query);
-    $query = 'SELECT `options_value` FROM `options` WHERE `options_name` = "title"';
-    $result = $db->query($query);
-    $row = $result->fetch_object();
-    $title = $row->options_value;    // 得到站点标题
-    
-    $query = 'SELECT `options_value` FROM `options` WHERE `options_name` = "subtitle"';
-    $result = $db->query($query);
-    $row = $result->fetch_object();
-    $subtitle = $row->options_value;    // 得到站点副标题
+    $title = getOption($_SESSION['options'], 'title');
+    $subtitle = getOption($_SESSION['options'], 'subtitle');
 } catch (Exception $e) {
     echoException($e);
 }
+
+// 显示头部
+showHeader($title, $subtitle);
 
 $ui = getNewSmarty();
 $ui->assign('title', $title);
 $ui->assign('subtitle', $subtitle);
 $ui->assign('pageLocated', 'index');
-$ui->assign('userUid', $cookieValue);
+if (isset($_SESSION['userCookie'])) {
+    $ui->assign('uid', $_SESSION['userId']);
+} else {
+    $ui->assign('uid', -1);
+}
 $ui->display('index.tpl');
 
-showFooter($_config['website']['title']);
+// 显示底部
+showFooter($title);
 
 ?>

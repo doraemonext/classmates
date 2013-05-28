@@ -7,7 +7,7 @@
             </div>
                 <div class="span4">
                     <br />
-                    {if $validUser == ''}
+                    {if $uid == -1}
                         <div class="row">
                             <div class="span1">
                                 <a href="{$images_tourist}" class="thumbnail">
@@ -29,7 +29,7 @@
                                 </a>
                             </div>
                             <div class="span3">
-                                <p><strong>{$validUser} 您好，欢迎您的使用<br /><br /></strong></p>
+                                <p><strong><span id="index_username"></span>，欢迎您的使用<br /><br /></strong></p>
                                 <a class="btn btn-success" href="#"> 个人信息管理</a>
                                 &nbsp;&nbsp;
                                 <a class="btn btn-primary" href="#"> 安全退出</a>
