@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -5,11 +6,12 @@
         <link rel="stylesheet" type="text/css" href="templates/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="templates/css/style.css">
         <link rel="stylesheet" type="text/css" href="templates/css/pic/style.css">        
-        <script type="text/javascript" src="templates/js/jquery-1.3.2.min.js"></script>
+        <script type="text/javascript" src="templates/js/jquery.js"></script>        
+        <script type="text/javascript" src="templates/js/bootstrap.js"></script>
         <script type="text/javascript" src="templates/js/jquery.jDiaporama.js"></script>
         <script type="text/javascript" src="templates/js/script.js"></script>
         <script type="text/javascript" src="templates/js/classmates.js"></script>
-        <script type="text/javascript" src="templates/js/tools/scroll_content.js"></script>
+        <script type="text/javascript" src="templates/js/tools/scroll_content.js"></script>   
     </head>
     
     <body>

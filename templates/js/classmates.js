@@ -53,7 +53,8 @@ function displayAccountResult(xmlHttp) {
     if (xmlHttp.readyState == 4) {
         var username = xmlHttp.responseText;
         if (username == -1) {
-            window.location.href = "error.php?content=Cookie有误，请您删除所有Cookie后重新登录尝试";
+            
+            //window.location.href = "error.php?content=Cookie有误，请您删除所有Cookie后重新登录尝试";
         } else {
             var root = document.getElementById('index_username');
             var text = document.createTextNode(username);

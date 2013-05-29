@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-05-28 07:48:19
+<?php /* Smarty version Smarty-3.1.13, created on 2013-05-29 11:43:58
          compiled from "smarty/header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:86943349151a30635a882a2-01521467%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '500bf49b2db79e84a4de92b818a79a85b01ab0c9' => 
     array (
       0 => 'smarty/header.tpl',
-      1 => 1369698490,
+      1 => 1369799032,
       2 => 'file',
     ),
   ),
@@ -26,7 +26,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_51a30635b3b031_42349139')) {function content_51a30635b3b031_42349139($_smarty_tpl) {?><html>
+<?php if ($_valid && !is_callable('content_51a30635b3b031_42349139')) {function content_51a30635b3b031_42349139($_smarty_tpl) {?><!DOCTYPE html>
+<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <title><?php echo $_smarty_tpl->tpl_vars['title']->value;?>
@@ -34,11 +35,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <link rel="stylesheet" type="text/css" href="templates/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="templates/css/style.css">
         <link rel="stylesheet" type="text/css" href="templates/css/pic/style.css">        
-        <script type="text/javascript" src="templates/js/jquery-1.3.2.min.js"></script>
+        <script type="text/javascript" src="templates/js/jquery.js"></script>        
+        <script type="text/javascript" src="templates/js/bootstrap.js"></script>
         <script type="text/javascript" src="templates/js/jquery.jDiaporama.js"></script>
         <script type="text/javascript" src="templates/js/script.js"></script>
         <script type="text/javascript" src="templates/js/classmates.js"></script>
-        <script type="text/javascript" src="templates/js/tools/scroll_content.js"></script>
+        <script type="text/javascript" src="templates/js/tools/scroll_content.js"></script>   
     </head>
     
     <body>

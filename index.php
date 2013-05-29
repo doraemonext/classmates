@@ -5,14 +5,10 @@ require_once dirname(__FILE__).'/functions.php';
 require_once dirname(__FILE__).'/tools/get_options.php';
 require_once dirname(__FILE__).'/tools/cookie.php';
 
-session_start();
-
-$_SESSION['options'] = $_options;
-
 // 取得标题和副标题信息
 try {
-    $title = getOption($_SESSION['options'], 'title');
-    $subtitle = getOption($_SESSION['options'], 'subtitle');
+    $title = getOption($_options, 'title');
+    $subtitle = getOption($_options, 'subtitle');
 } catch (Exception $e) {
     echoException($e);
 }
@@ -25,9 +21,9 @@ $ui->assign('title', $title);
 $ui->assign('subtitle', $subtitle);
 $ui->assign('pageLocated', 'index');
 if (isset($_SESSION['userCookie'])) {
-    $ui->assign('uid', $_SESSION['userId']);
+    $ui->assign('uid', 'known');
 } else {
-    $ui->assign('uid', -1);
+    $ui->assign('uid', 'unknown');
 }
 $ui->display('index.tpl');
 

@@ -11,25 +11,22 @@ require_once dirname(__FILE__).'/../functions.php';
 
 session_start();
 
-if (isset($_COOKIE['userCookie'])) {
-    $cookie_json_string = decrypt($_COOKIE['userCookie'], $_config['safe']['rand_cookie']);
+if (isset($_SESSION['userCookie'])) {
+    $cookie_json_string = decrypt($_SESSION['userCookie'], $_config['safe']['rand_cookie']);
     $userCookie = json_decode($cookie_json_string);
     
     if ($userCookie['login_ip'] != $_SERVER['REMOTE_ADDR']) {
-        unset($_COOKIE['userCookie']);
+        unset($_SESSION['userCookie']);
     }
     if (floor((strtotime(date('Y-m-d H:i:s')) - strtotime($userCookie['login_time'])) % 86400 % 60) > 7200) {
-        unset($_COOKIE['userCookie']);
+        unset($_SESSION['userCookie']);
     }
 }
 
-if (isset($_COOKIE['userCookie'])) {
+if (isset($_SESSION['userCookie'])) {
     $_SESSION['userId'] = $userCookie['user_id'];
 } else {
     unset($_SESSION['userId']);
 }
-
-$_SESSION['userCookie'] = 'xxx';
-$_SESSION['userId'] = 1;
 
 ?>

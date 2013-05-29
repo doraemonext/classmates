@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 文件说明：返回用户名
+ * 文件说明：返回用户名及头像地址
  *
  * @author     Doraemonext
  */
@@ -10,9 +10,7 @@ require_once dirname(__FILE__).'/../config.php';
 require_once dirname(__FILE__).'/../functions.php';
 require_once dirname(__FILE__).'/../tools/cookie.php';
 
-session_start();
-
-if (!isset($_COOKIE['userCookie'])) {
+if (!isset($_SESSION['userCookie'])) {
     echo '-1';  // 表示cookie出错，无法得到用户名
     exit();
 }
