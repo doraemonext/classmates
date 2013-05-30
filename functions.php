@@ -25,7 +25,7 @@ function getNewSmarty()
 /*
  * 显示头部 HTML 内容
  */
-function showHeader($title, $subtitle)
+function showHeader($title, $subtitle, $uid)
 {
     $ui = getNewSmarty();
     $navigationPage = array(
@@ -38,6 +38,7 @@ function showHeader($title, $subtitle)
     $ui->assign('title', $title);
     $ui->assign('subtitle', $subtitle);
     $ui->assign('navigationPage', $navigationPage);
+    $ui->assign('uid', $uid);
     
     $ui->display('header.tpl');
 }
@@ -106,6 +107,14 @@ function encrypt($decStr, $strKey)
 function decrypt($encStr, $strKey)
 {
     return mcrypt_decrypt(MCRYPT_DES, $strKey, base64_decode($encStr), MCRYPT_MODE_CBC);
+}
+
+function checkPassword($password, $salt, $database_password) {
+    if (md5($database_password.$salt) == $password) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 function curPageURL()

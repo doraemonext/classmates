@@ -8,10 +8,15 @@
 
 require_once dirname(__FILE__).'/../config.php';
 require_once dirname(__FILE__).'/../functions.php';
-require_once dirname(__FILE__).'/../tools/cookie.php';
+
+require dirname(__FILE__).'/../tools/cookie.php';
+
+$returnValue = array();
 
 if (!isset($_SESSION['userCookie'])) {
-    echo '-1';  // 表示cookie出错，无法得到用户名
+    $returnValue['status'] = 'ERROR';
+    $returnValue['statusInfo'] = '您好，您的 Cookie 有误，请重新登录';
+    echo json_encode($returnValue);
     exit();
 }
 
@@ -20,9 +25,21 @@ try {
                        $_config['db']['password'], $_config['db']['dbname']);
     $query = 'SET NAMES UTF8';
     $db->query($query);
-    $query = 'SELECT `name` FROM `classmates` WHERE `id` = '.intval($_SESSION['userId']);
+    $query = 'SELECT `name`, `avatar` FROM `classmates` WHERE `id` = '.intval($_SESSION['userId']);
     $result = $db->query($query);
-    echo addslashes($result->fetch_object()->name);
+    if ($result->num_rows != 1) {
+        $returnValue['status'] = 'ERROR';
+        $returnValue['statusInfo'] = '您好，数据库异常，请联系管理员';
+        echo json_encode($returnValue);
+        exit();
+    }
+    
+    $rows = $result->fetch_object();
+    $returnValue['status'] = 'OK';
+    $returnValue['username'] = $rows->name;
+    $returnValue['avatar'] = $rows->avatar;        
+    echo json_encode($returnValue);
+    exit();
 } catch (Exception $e) {
     echoException($e);
 }
