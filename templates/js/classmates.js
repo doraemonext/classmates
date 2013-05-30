@@ -69,6 +69,9 @@ function displayAccountResult(xmlHttp) {
         
         var username = info["username"];
         var avatar = info["avatar"];
+        if (avatar == null) {
+            avatar = "images/tourist.png";
+        }
         
         var usernameRoot = document.getElementById('header_username');
         var usernameText = document.createTextNode(username);
@@ -109,6 +112,7 @@ function displayLoginInfoResult(xmlHttp) {
         root.setAttribute("class", "alert alert-info");
         clearChildNode(root);
         root.appendChild(text);
+        return;
     } 
     
     var info = JSON.parse(xmlHttp.responseText);
@@ -118,7 +122,7 @@ function displayLoginInfoResult(xmlHttp) {
         root.setAttribute("class", "alert alert-success");
         clearChildNode(root);
         root.appendChild(text);
-        window.location.href = "index.php";
+        window.location.reload();
     } else if (info["status"] == "ERROR") {
         var text = document.createTextNode(info["statusInfo"]);
         root.style.display = 'block';
@@ -155,6 +159,54 @@ function getSalt() {
     xmlHttp.open("GET", url, false);
     xmlHttp.send(null);
     return salt;
+}
+
+// 注册用户
+function register() {
+    var xmlHttp = getXmlHttpObject();
+    if (xmlHttp == null) {
+        window.location.href = "error.php?content=您的浏览器不支持 HTTP Request，请您升级浏览器后再访问 ^_^";
+        return;
+    }
+    
+    var username = document.getElementById('reg_username').value;
+    var password = document.getElementById('reg_password').value;
+    var confirmPassword = document.getElementById('reg_password_confirm').value;
+    var sendData = "username=" + encodeURIComponent(username) + 
+            "&password=" + encodeURIComponent(md5(password)) + 
+            "&password_confirm=" + encodeURIComponent(md5(confirmPassword));
+    
+    xmlHttp.onreadystatechange = function() { registerResult(xmlHttp); };
+    xmlHttp.open("POST", "register.php", true);
+    xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xmlHttp.send(sendData);
+}
+function registerResult(xmlHttp) {
+    var root = document.getElementById('register_info');
+    if (xmlHttp.readyState < 4) {
+        var text = document.createTextNode('正在注册中，请稍候……');
+        root.style.display = 'block';
+        root.setAttribute("class", "alert alert-info");
+        clearChildNode(root);
+        root.appendChild(text);
+        return;
+    } 
+    
+    var info = JSON.parse(xmlHttp.responseText);
+    if (info["status"] == "OK") { 
+        var text = document.createTextNode('注册成功，正在跳转……');
+        root.style.display = 'block';
+        root.setAttribute("class", "alert alert-success");
+        clearChildNode(root);
+        root.appendChild(text);
+        window.location.reload();
+    } else if (info["status"] == "ERROR") {
+        var text = document.createTextNode(info["statusInfo"]);
+        root.style.display = 'block';
+        root.setAttribute("class", "alert alert-error");
+        clearChildNode(root);
+        root.appendChild(text);
+    }
 }
 
 // 使得用户安全退出，销毁session

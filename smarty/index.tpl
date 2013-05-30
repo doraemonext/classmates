@@ -287,13 +287,16 @@
         <h3 id="myModalLabel" class="well">注册</h3>
     </div>
     <div class="modal-body">
-        <form class="form-horizontal" action='register.php' method="POST">
+        <div class="alert alert-info" id="register_info" style="display: none;">
+            <!--显示注册进度-->
+        </div>
+        <form class="form-horizontal" action='' method="POST">
             <fieldset>
                 <div class="control-group"></div>
                 <div class="control-group">
                     <label class="control-label" for="username">姓名</label>
                     <div class="controls">
-                        <input type="text" id="username" name="username" placeholder="" class="input-large"
+                        <input type="text" id="reg_username" name="reg_username" placeholder="" class="input-large"
                                maxlength="5" minlength="2"
                                data-validation-minlength-message="姓名最少为2个汉字"
                                data-validation-maxlength-message="姓名最多为5个汉字"
@@ -305,7 +308,7 @@
                 <div class="control-group">
                     <label class="control-label" for="password">密码</label>
                     <div class="controls">
-                        <input type="password" id="password" name="password" placeholder="" class="input-large"
+                        <input type="password" id="reg_password" name="reg_password" placeholder="" class="input-large"
                                maxlength="30" minlength="3"
                                data-validation-minlength-message="密码最少为3个字符"
                                data-validation-maxlength-message="密码最多为30个字符"
@@ -317,8 +320,8 @@
                 <div class="control-group">
                     <label class="control-label" for="password_confirm">密码确认</label>
                     <div class="controls">
-                        <input type="password" id="password_confirm" name="password_confirm" placeholder="" class="input-large"
-                               data-validation-match-match="password"
+                        <input type="password" id="reg_password_confirm" name="reg_password_confirm" placeholder="" class="input-large"
+                               data-validation-match-match="reg_password"
                                data-validation-match-message="两次输入的密码不匹配"
                                maxlength="30" minlength="3"
                                data-validation-minlength-message="密码最少为3个字符"
@@ -330,7 +333,7 @@
                 <div class="control-group">
                     <div class="controls row">
                         <div class="span2">
-                            <button class="btn btn-primary btn-block" type="submit">提交注册信息</button>
+                            <button class="btn btn-primary btn-block" type="button" onclick="register()">提交注册信息</button>
                         </div>
                     </div>
                 </div>
