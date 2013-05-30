@@ -1,235 +1,28 @@
-{if $pageLocated == 'index'}
-<div class="white_framework">
-    <div class="row">
-        <div class="span6">
-            <div id="pic_carousel" class="carousel slide">
-                <ol class="carousel-indicators" id="index_picture_navigation">
-                    <li data-target="#pic_carousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#pic_carousel" data-slide-to="1"></li>
-                    <li data-target="#pic_carousel" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner" id="index_picture_url">
-                    <div class="active item"><img src="images/galerie/image1.jpg"/></div>
-                    <div class="item"><img src="images/galerie/image2.jpg"/></div>
-                    <div class="item"><img src="images/galerie/image3.jpg"/></div>
+<div class="container">
+    <div class="white_framework">
+        <div class="row">
+            <div class="span6">
+                <div id="pic_carousel" class="carousel slide">
+                    <ol class="carousel-indicators" id="index_picture_navigation">
+                        <li data-target="#pic_carousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#pic_carousel" data-slide-to="1"></li>
+                        <li data-target="#pic_carousel" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner" id="index_picture_url">
+                        <div class="active item"><img src="images/galerie/image1.jpg"/></div>
+                        <div class="item"><img src="images/galerie/image2.jpg"/></div>
+                        <div class="item"><img src="images/galerie/image3.jpg"/></div>
+                    </div>
+                    <a class="carousel-control left" href="#pic_carousel" data-slide="prev"></a>
+                    <a class="carousel-control right" href="#pic_carousel" data-slide="next"></a>
                 </div>
-                <a class="carousel-control left" href="#pic_carousel" data-slide="prev"></a>
-                <a class="carousel-control right" href="#pic_carousel" data-slide="next"></a>
             </div>
-        </div>
-        <div class="span5" id="index_writing">
-            <!-- Javascript -->
-        </div>
-        <br/>
-    </div>
-</div>
-{/if}
-    
-<ul class="breadcrumb" id="index_breadcrumb">
-    <li><a href="#">首页</a> <span class="divider">/</span></li>
-    <li><a href="#">同学录</a> <span class="divider">/</span></li>
-    <li class="active">预览</li>
-</ul>
-    
-<div class="row">
-    <div class="span8">
-        <div class="page-header">
-            <h3>同学录一览</h3>
-        </div>
-        <div class="row" id="index_classmates">
-            <div class="span2">
-                <a href="#" class="thumbnail">
-                    <img src="images/448/guoyaoxing.png" alt="">
-                </a>
+            <div class="span5" id="index_writing">
+                <!-- Javascript -->
             </div>
-            <div class="span2">
-                <p>
-                    姓名：郭耀星 <br />
-                    性别：男 <br />
-                    民族：汉族 <br />
-                </p>
-                <p><a class="btn btn-primary" href="#">详细信息</a></p>
-            </div>
-            <div class="span2">
-                <a href="#" class="thumbnail">
-                    <img src="images/448/guoyaoxing.png" alt="">
-                </a>
-            </div>
-            <div class="span2">
-                <p>
-                    姓名：郭耀星 <br />
-                    性别：男 <br />
-                    民族：汉族 <br />
-                </p>
-                <p><a class="btn btn-primary" href="#">详细信息</a></p>
-            </div>
-        </div>
-        <hr />
-        <div class="row">
-            <div class="span2">
-                <a href="#" class="thumbnail">
-                    <img src="images/448/guoyaoxing.png" alt="">
-                </a>
-            </div>
-            <div class="span2">
-                <p>
-                    姓名：郭耀星 <br />
-                    性别：男 <br />
-                    民族：汉族 <br />
-                </p>
-                <p><a class="btn btn-primary" href="#">详细信息</a></p>
-            </div>
-            <div class="span2">
-                <a href="#" class="thumbnail">
-                    <img src="images/448/guoyaoxing.png" alt="">
-                </a>
-            </div>
-            <div class="span2">
-                <p>
-                    姓名：郭耀星 <br />
-                    性别：男 <br />
-                    民族：汉族 <br />
-                </p>
-                <p><a class="btn btn-primary" href="#">详细信息</a></p>
-            </div>
-        </div>
-        <hr />
-        <div class="row">
-            <div class="span2">
-                <a href="#" class="thumbnail">
-                    <img src="images/448/guoyaoxing.png" alt="">
-                </a>
-            </div>
-            <div class="span2">
-                <p>
-                    姓名：郭耀星 <br />
-                    性别：男 <br />
-                    民族：汉族 <br />
-                </p>
-                <p><a class="btn btn-primary" href="#">详细信息</a></p>
-            </div>
-            <div class="span2">
-                <a href="#" class="thumbnail">
-                    <img src="images/448/guoyaoxing.png" alt="">
-                </a>
-            </div>
-            <div class="span2">
-                <p>
-                    姓名：郭耀星 <br />
-                    性别：男 <br />
-                    民族：汉族 <br />
-                </p>
-                <p><a class="btn btn-primary" href="#">详细信息</a></p>
-            </div>
-        </div>
-        <hr />
-        <div class="row">
-            <div class="span2">
-                <a href="#" class="thumbnail">
-                    <img src="images/448/guoyaoxing.png" alt="">
-                </a>
-            </div>
-            <div class="span2">
-                <p>
-                    姓名：郭耀星 <br />
-                    性别：男 <br />
-                    民族：汉族 <br />
-                </p>
-                <p><a class="btn btn-primary" href="#">详细信息</a></p>
-            </div>
-            <div class="span2">
-                <a href="#" class="thumbnail">
-                    <img src="images/448/guoyaoxing.png" alt="">
-                </a>
-            </div>
-            <div class="span2">
-                <p>
-                    姓名：郭耀星 <br />
-                    性别：男 <br />
-                    民族：汉族 <br />
-                </p>
-                <p><a class="btn btn-primary" href="#">详细信息</a></p>
-            </div>
-        </div>
-        <hr />
-        <div class="row">
-            <div class="span2">
-                <a href="#" class="thumbnail">
-                    <img src="images/448/guoyaoxing.png" alt="">
-                </a>
-            </div>
-            <div class="span2">
-                <p>
-                    姓名：郭耀星 <br />
-                    性别：男 <br />
-                    民族：汉族 <br />
-                </p>
-                <p><a class="btn btn-primary" href="#">详细信息</a></p>
-            </div>
-            <div class="span2">
-                <a href="#" class="thumbnail">
-                    <img src="images/448/guoyaoxing.png" alt="">
-                </a>
-            </div>
-            <div class="span2">
-                <p>
-                    姓名：郭耀星 <br />
-                    性别：男 <br />
-                    民族：汉族 <br />
-                </p>
-                <p><a class="btn btn-primary" href="#">详细信息</a></p>
-            </div>
-        </div>
-        <div class="pagination" id="index_pagination">
-            <ul>
-                <li><a href="#">Prev</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">Next</a></li>
-            </ul>
+            <br/>
         </div>
     </div>
-    <div class="span4">
-        <div class="page-header">
-            <h3>最新公告</h3>
-        </div>
-        <div class="well" id="index_announcement">
-            详细信息详细信息详细信息详细信息xxx
-            <br />
-            详细信息详细信息详细信息详细信息xxx
-            <br />
-            详细信息详细信息详细信息详细信息xxx
-            <br />
-            详细信息详细信息详细信息详细信息xxx
-            <br />
-            详细信息详细信息详细信息详细信息xxx
-            <br />
-            详细信息详细信息详细信息详细信息xxx
-            <br />
-            详细信息详细信息详细信息详细信息xxx
-                
-        </div>
-        <div class="page-header">
-            <h3>留言板</h3>
-        </div>
-        <div id="index_message">
-            <p>我说了一句猥琐的话</p>
-            <p align="right">——郭耀星</p>
-            <br />
-        </div>
-        <div class="controls">
-            <strong>你有什么想说的？</strong>
-            <br />
-            <br />
-            <textarea class="input-xlarge" id="textarea" rows="5" ></textarea>
-            <a class="btn btn-primary" href="#" >提交</a>
-        </div>
-    </div>
-</div>
-<hr />
 </div>
     
 <!-- 登录窗口 -->
@@ -341,4 +134,3 @@
         </form>
     </div>
 </div>    
-<!-- div container 在footer.tpl关闭 -->    

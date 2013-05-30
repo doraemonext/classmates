@@ -7,6 +7,7 @@
         <link rel="stylesheet" type="text/css" href="templates/css/style.css">
         <script type="text/javascript" src="templates/js/jquery.js"></script>        
         <script type="text/javascript" src="templates/js/bootstrap.min.js"></script>    
+        <script type="text/javascript" src="templates/js/jquery.masonry.min.js"></script>
         <script type="text/javascript" src="templates/js/tools/scroll_content.js"></script>  
         <script type="text/javascript" src="templates/js/tools/validation.js"></script>  
         <script type="text/javascript" src="templates/js/classmates.js"></script>
@@ -73,7 +74,7 @@
                                     </a>
                                 </div>
                                 <div class="span3">
-                                    <p><strong><span id="header_username"></span>，欢迎您的使用<br /><br /></strong></p>
+                                    <p><strong><span id="header_username"></span>，欢迎回来<br /><br /></strong></p>
                                     <a class="btn btn-success" href="#"> 个人信息管理</a>
                                     &nbsp;&nbsp;
                                     <a class="btn btn-primary" onclick="logout()"> 安全退出</a>
@@ -84,3 +85,4 @@
                 </div>
             </header>
             <br/>
+        </div>

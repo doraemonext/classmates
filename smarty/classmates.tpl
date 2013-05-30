@@ -1,49 +1,124 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-05-30 20:38:41
-         compiled from "smarty/index.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:24041766851a217c4ea4903-46274097%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
-$_valid = $_smarty_tpl->decodeProperties(array (
-  'file_dependency' => 
-  array (
-    '33fed1bf71ce35f0184977a7585e830157e01dae' => 
-    array (
-      0 => 'smarty/index.tpl',
-      1 => 1369917513,
-      2 => 'file',
-    ),
-  ),
-  'nocache_hash' => '24041766851a217c4ea4903-46274097',
-  'function' => 
-  array (
-  ),
-  'version' => 'Smarty-3.1.13',
-  'unifunc' => 'content_51a217c4eeede1_20960214',
-  'has_nocache_code' => false,
-),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_51a217c4eeede1_20960214')) {function content_51a217c4eeede1_20960214($_smarty_tpl) {?><div class="container">
-    <div class="white_framework">
-        <div class="row">
-            <div class="span6">
-                <div id="pic_carousel" class="carousel slide">
-                    <ol class="carousel-indicators" id="index_picture_navigation">
-                        <li data-target="#pic_carousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#pic_carousel" data-slide-to="1"></li>
-                        <li data-target="#pic_carousel" data-slide-to="2"></li>
-                    </ol>
-                    <div class="carousel-inner" id="index_picture_url">
-                        <div class="active item"><img src="images/galerie/image1.jpg"/></div>
-                        <div class="item"><img src="images/galerie/image2.jpg"/></div>
-                        <div class="item"><img src="images/galerie/image3.jpg"/></div>
-                    </div>
-                    <a class="carousel-control left" href="#pic_carousel" data-slide="prev"></a>
-                    <a class="carousel-control right" href="#pic_carousel" data-slide="next"></a>
+<div class="container">
+    <ul class="breadcrumb" id="index_breadcrumb">
+        {if $pageLocated == 'index'}
+            <li class="active">首页 <span class="divider">/</span></li>
+        {else}
+            <li><a href="index.php">首页</a> <span class="divider">/</span></li>
+            {if $pageLocated == 'classmates'}
+                <li class="active">同学录</li>
+            {elseif $pageLocated == 'show_picture'}
+                <li class="active">精彩瞬间</li>
+            {elseif $pageLocated == 'show_video'}
+                <li class="active">视频掠影</li>
+            {elseif $pageLocated == 'timeaxis'}
+                <li class="active">时间轴</li>
+            {/if}
+        {/if}
+    </ul>
+        
+    <div class="row">
+        <div class="span12">
+            <div class="page-header">
+                <h3>同学录一览</h3>
+            </div>
+            <div class="row" id="index_classmates">
+                <div class="span2">
+                    <a href="#" class="thumbnail">
+                        <img src="images/448/guoyaoxing.png" alt="">
+                    </a>
+                </div>
+                <div class="span2">
+                    <p>
+                        姓名：郭耀星 <br />
+                        性别：男 <br />
+                        民族：汉族 <br />
+                    </p>
+                    <p><a class="btn btn-primary" href="#">详细信息</a></p>
+                </div>
+                <div class="span2">
+                    <a href="#" class="thumbnail">
+                        <img src="images/448/guoyaoxing.png" alt="">
+                    </a>
+                </div>
+                <div class="span2">
+                    <p>
+                        姓名：郭耀星 <br />
+                        性别：男 <br />
+                        民族：汉族 <br />
+                    </p>
+                    <p><a class="btn btn-primary" href="#">详细信息</a></p>
+                </div>
+                <div class="span2">
+                    <a href="#" class="thumbnail">
+                        <img src="images/448/guoyaoxing.png" alt="">
+                    </a>
+                </div>
+                <div class="span2">
+                    <p>
+                        姓名：郭耀星 <br />
+                        性别：男 <br />
+                        民族：汉族 <br />
+                    </p>
+                    <p><a class="btn btn-primary" href="#">详细信息</a></p>
                 </div>
             </div>
-            <div class="span5" id="index_writing">
-                <!-- Javascript -->
+            <hr />
+            <div class="row">
+                <div class="span2">
+                    <a href="#" class="thumbnail">
+                        <img src="images/448/guoyaoxing.png" alt="">
+                    </a>
+                </div>
+                <div class="span2">
+                    <p>
+                        姓名：郭耀星 <br />
+                        性别：男 <br />
+                        民族：汉族 <br />
+                    </p>
+                    <p><a class="btn btn-primary" href="#">详细信息</a></p>
+                </div>
+                <div class="span2">
+                    <a href="#" class="thumbnail">
+                        <img src="images/448/guoyaoxing.png" alt="">
+                    </a>
+                </div>
+                <div class="span2">
+                    <p>
+                        姓名：郭耀星 <br />
+                        性别：男 <br />
+                        民族：汉族 <br />
+                    </p>
+                    <p><a class="btn btn-primary" href="#">详细信息</a></p>
+                </div>
+                <div class="span2">
+                    <a href="#" class="thumbnail">
+                        <img src="images/448/guoyaoxing.png" alt="">
+                    </a>
+                </div>
+                <div class="span2">
+                    <p>
+                        姓名：郭耀星 <br />
+                        性别：男 <br />
+                        民族：汉族 <br />
+                    </p>
+                    <p><a class="btn btn-primary" href="#">详细信息</a></p>
+                </div>
             </div>
-            <br/>
+            <hr />
+            <div class="pagination" id="index_pagination">
+                <ul>
+                    <li><a href="#">Prev</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">Next</a></li>
+                </ul>
+            </div>
         </div>
     </div>
+    <hr />
 </div>
     
 <!-- 登录窗口 -->
@@ -155,4 +230,4 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         </form>
     </div>
 </div>    
-<?php }} ?>
+<!-- div container 在footer.tpl关闭 -->    

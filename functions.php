@@ -27,13 +27,15 @@ function getNewSmarty()
  */
 function showHeader($title, $subtitle, $uid)
 {
+    global $_config;
+    
     $ui = getNewSmarty();
     $navigationPage = array(
-        '同学录' => 'classmates.php',
-        '精彩瞬间' => 'show_picture.php',
-        '视频掠影' => 'show_video.php',
-        '时间轴' => 'timeaxis.php'
-        );
+        $_config['page']['classmates'] => 'classmates.php',
+        $_config['page']['show_picture'] => 'show_picture.php',
+        $_config['page']['show_video'] => 'show_video.php',
+        $_config['page']['timeaxis'] => 'timeaxis.php'
+    );
     
     $ui->assign('title', $title);
     $ui->assign('subtitle', $subtitle);
