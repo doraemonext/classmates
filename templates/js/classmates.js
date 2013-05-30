@@ -1,3 +1,4 @@
+// 验证输入的bootstrap库
 $(document).ready(function() {
     $("input,select,textarea").not("[type=submit]").jqBootstrapValidation();
 });    
@@ -5,6 +6,8 @@ $(document).ready(function() {
 window.onload = function() {
     navigationMotto();
     displayAccount();
+    displayIndexWriting();
+    displayIndexPicture();
 }
 
 // 在页面加载后显示导航条上的座右铭
@@ -22,11 +25,10 @@ function navigationMotto()
     xmlHttp.open("GET", url, true);
     xmlHttp.send(null);
 }
-// 导航条上座右铭的ajax回调函数
 function navigationMottoResult(xmlHttp) {
     if (xmlHttp.readyState == 4) {
         var info = JSON.parse(xmlHttp.responseText);
-        var root = document.getElementById('navigationMotto');
+        var root = document.getElementById('navigation_motto');
         var ul = document.createElement('ul');
         root.appendChild(ul);
         for (var i = 0; i < info.length; i++) {
@@ -40,7 +42,8 @@ function navigationMottoResult(xmlHttp) {
 
 // 当用户登录的情况下，更新用户名及头像
 function displayAccount() {
-    if (document.getElementById('headerUsername') == null) {
+    // 判断用户是否处于登录状态
+    if (document.getElementById('header_username') == null) {
         return;
     }
     
@@ -67,17 +70,17 @@ function displayAccountResult(xmlHttp) {
         var username = info["username"];
         var avatar = info["avatar"];
         
-        var usernameRoot = document.getElementById('headerUsername');
+        var usernameRoot = document.getElementById('header_username');
         var usernameText = document.createTextNode(username);
         clearChildNode(usernameRoot);
         usernameRoot.appendChild(usernameText);
         
-        var avatarRoot = document.getElementById('headerUsernameAvatar');
+        var avatarRoot = document.getElementById('header_username_avatar');
         avatarRoot.src = avatar + "?timestamp=" + Date();
     }
 }
 
-// 显示登录进度
+// 在登录时显示登录进度
 function displayLoginInfo() {
     var xmlHttp = getXmlHttpObject();
     if (xmlHttp == null) {
@@ -85,8 +88,8 @@ function displayLoginInfo() {
         return;
     }
     
-    var username = document.getElementById('loginUsername').value;
-    var password = document.getElementById('loginPassword').value;
+    var username = document.getElementById('login_username').value;
+    var password = document.getElementById('login_password').value;
     var salt = getSalt();
     var finalPassword = md5(md5(password) + salt);
     var sendData = "username=" + encodeURIComponent(username) + 
@@ -98,31 +101,34 @@ function displayLoginInfo() {
     xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xmlHttp.send(sendData);
 }
-
 function displayLoginInfoResult(xmlHttp) {
-    var root = document.getElementById('loginInfo');
+    var root = document.getElementById('login_info');
     if (xmlHttp.readyState < 4) {
         var text = document.createTextNode('正在登录中，请稍候……');
         root.style.display = 'block';
-        root.className = 'alert alert-info';
+        root.setAttribute("class", "alert alert-info");
         clearChildNode(root);
         root.appendChild(text);
-    } else if (xmlHttp.responseText == 'OK') { 
+    } 
+    
+    var info = JSON.parse(xmlHttp.responseText);
+    if (info["status"] == "OK") { 
         var text = document.createTextNode('登录成功，正在跳转……');
         root.style.display = 'block';
-        root.className = 'alert alert-success';
+        root.setAttribute("class", "alert alert-success");
         clearChildNode(root);
         root.appendChild(text);
         window.location.href = "index.php";
-    } else {
-        var text = document.createTextNode(xmlHttp.responseText);
+    } else if (info["status"] == "ERROR") {
+        var text = document.createTextNode(info["statusInfo"]);
         root.style.display = 'block';
-        root.className = 'alert alert-error';
+        root.setAttribute("class", "alert alert-error");
         clearChildNode(root);
         root.appendChild(text);
     }
 }
 
+// 删除节点root的所有子节点
 function clearChildNode(root) {
     var child = root.childNodes;
     for (var i = child.length - 1; i >= 0; i--) {
@@ -130,6 +136,7 @@ function clearChildNode(root) {
     }
 }
 
+// 得到服务器此时的session_id
 function getSalt() {
     var xmlHttp = getXmlHttpObject();
     var salt;
@@ -150,6 +157,7 @@ function getSalt() {
     return salt;
 }
 
+// 使得用户安全退出，销毁session
 function logout() {
     var xmlHttp = getXmlHttpObject();
     if (xmlHttp == null) {
@@ -170,6 +178,91 @@ function logout() {
     xmlHttp.send(null);
 }
 
+// 显示首页图片轮播右侧的文字
+function displayIndexWriting() {
+    // 当并非首页的时候，不显示文字
+    if (document.getElementById('index_writing') == null) {
+        return;
+    }
+    
+    var xmlHttp = getXmlHttpObject();
+    if (xmlHttp == null) {
+        window.location.href = "error.php?content=您的浏览器不支持 HTTP Request，请您升级浏览器后再访问 ^_^";
+        return;
+    }
+    
+    var url = "response/get_index_writing.php";
+    url = url + "?sid=" + Math.random();
+    xmlHttp.onreadystatechange = function() { displayIndexWritingResult(xmlHttp); };
+    xmlHttp.open("GET", url, true);
+    xmlHttp.send(null);
+}
+function displayIndexWritingResult(xmlHttp) {
+    var root = document.getElementById('index_writing');
+    if (xmlHttp.readyState < 4) {
+        var text = document.createTextNode('正在加载中，请稍候……');
+        clearChildNode(root);
+        root.appendChild(text);
+    } 
+    
+    clearChildNode(root);
+    root.innerHTML = xmlHttp.responseText;
+}
+
+function displayIndexPicture() {
+    if (document.getElementById('index_picture_navigation') == null) {
+        return;
+    }
+    
+    var xmlHttp = getXmlHttpObject();
+    if (xmlHttp == null) {
+        window.location.href = "error.php?content=您的浏览器不支持 HTTP Request，请您升级浏览器后再访问 ^_^";
+        return;
+    }
+    
+    var url = "response/get_index_picture.php";
+    url = url + "?sid=" + Math.random();
+    xmlHttp.onreadystatechange = function() { displayIndexPictureResult(xmlHttp); };
+    xmlHttp.open("GET", url, true);
+    xmlHttp.send(null);
+}
+function displayIndexPictureResult(xmlHttp) {
+    var rootNavigation = document.getElementById("index_picture_navigation");
+    var rootUrl = document.getElementById("index_picture_url");
+    if (xmlHttp.readyState == 4) {
+        var info = JSON.parse(xmlHttp.responseText);
+        var total = info["total"];
+        var li;
+        
+        clearChildNode(rootNavigation);
+        for (var i = 0; i < total; i++) {
+            li = document.createElement("li");
+            li.setAttribute("data-target", "#pic_carousel");
+            li.setAttribute("data-slide-to", i);
+            if (i == 0) {
+                li.setAttribute("class", "active");
+            }
+            rootNavigation.appendChild(li);
+        }
+        
+        var div, img;
+        clearChildNode(rootUrl);
+        for (var i = 0; i < total; i++) {
+            div = document.createElement("div");
+            img = document.createElement("img");
+            if (i == 0) {
+                div.setAttribute("class", "active item");
+            } else {
+                div.setAttribute("class", "item");
+            }
+            img.src = info["img"][i];
+            
+            rootUrl.appendChild(div);
+            div.appendChild(img);
+        }
+    }
+}
+
 // Ajax getXmlHttpObject function
 function getXmlHttpObject()
 {
@@ -186,6 +279,7 @@ function getXmlHttpObject()
     return xmlHttp;
 }
 
+// 依赖函数
 function md5(str) {
   // http://kevin.vanzonneveld.net
   // +   original by: Webtoolkit.info (http://www.webtoolkit.info/)
@@ -397,7 +491,6 @@ function md5(str) {
 
   return temp.toLowerCase();
 }
-
 function utf8_encode (argString) {
   // http://kevin.vanzonneveld.net
   // +   original by: Webtoolkit.info (http://www.webtoolkit.info/)

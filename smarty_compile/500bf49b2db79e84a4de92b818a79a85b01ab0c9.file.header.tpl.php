@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-05-30 11:37:00
+<?php /* Smarty version Smarty-3.1.13, created on 2013-05-30 16:54:45
          compiled from "smarty/header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:86943349151a30635a882a2-01521467%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '500bf49b2db79e84a4de92b818a79a85b01ab0c9' => 
     array (
       0 => 'smarty/header.tpl',
-      1 => 1369884964,
+      1 => 1369904084,
       2 => 'file',
     ),
   ),
@@ -37,11 +37,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 </title>
         <link rel="stylesheet" type="text/css" href="templates/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="templates/css/style.css">
-        <link rel="stylesheet" type="text/css" href="templates/css/pic/style.css">               
         <script type="text/javascript" src="templates/js/jquery.js"></script>        
-        <script type="text/javascript" src="templates/js/bootstrap.min.js"></script>     
-        <script type="text/javascript" src="templates/js/picture/jquery.jDiaporama.js"></script>
-        <script type="text/javascript" src="templates/js/picture/script.js"></script>
+        <script type="text/javascript" src="templates/js/bootstrap.min.js"></script>    
         <script type="text/javascript" src="templates/js/tools/scroll_content.js"></script>  
         <script type="text/javascript" src="templates/js/tools/validation.js"></script>  
         <script type="text/javascript" src="templates/js/classmates.js"></script>
@@ -73,7 +70,7 @@ $_smarty_tpl->tpl_vars['address']->_loop = true;
                             <?php } ?>
                         </ul>
                         <div class="nav pull-right" id="main-menu-right">
-                            <div class="scrollDiv" id="navigationMotto">
+                            <div class="scrollDiv" id="navigation_motto">
                                 <!-- Javascript -->
                             </div>
                         </div>
@@ -116,11 +113,11 @@ $_smarty_tpl->tpl_vars['address']->_loop = true;
                             <div class="row">
                                 <div class="span1">
                                     <a href="#" class="thumbnail">
-                                        <img id="headerUsernameAvatar" src="images/tourist.png" alt="">
+                                        <img id="header_username_avatar" src="images/tourist.png" alt="">
                                     </a>
                                 </div>
                                 <div class="span3">
-                                    <p><strong><span id="headerUsername"></span>，欢迎您的使用<br /><br /></strong></p>
+                                    <p><strong><span id="header_username"></span>，欢迎您的使用<br /><br /></strong></p>
                                     <a class="btn btn-success" href="#"> 个人信息管理</a>
                                     &nbsp;&nbsp;
                                     <a class="btn btn-primary" onclick="logout()"> 安全退出</a>

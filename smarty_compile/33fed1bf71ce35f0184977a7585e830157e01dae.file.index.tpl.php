@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-05-30 10:35:55
+<?php /* Smarty version Smarty-3.1.13, created on 2013-05-30 17:18:29
          compiled from "smarty/index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:24041766851a217c4ea4903-46274097%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '33fed1bf71ce35f0184977a7585e830157e01dae' => 
     array (
       0 => 'smarty/index.tpl',
-      1 => 1369881354,
+      1 => 1369904418,
       2 => 'file',
     ),
   ),
@@ -17,34 +17,38 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'version' => 'Smarty-3.1.13',
   'unifunc' => 'content_51a217c4eeede1_20960214',
+  'variables' => 
+  array (
+    'pageLocated' => 0,
+  ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_51a217c4eeede1_20960214')) {function content_51a217c4eeede1_20960214($_smarty_tpl) {?><div class="white_framework">
+<?php if ($_valid && !is_callable('content_51a217c4eeede1_20960214')) {function content_51a217c4eeede1_20960214($_smarty_tpl) {?><?php if ($_smarty_tpl->tpl_vars['pageLocated']->value=='index'){?>
+<div class="white_framework">
     <div class="row">
-        <div class="span7">
-            <ul class="diaporama1" id="index_picture_show">
-                <li><img src="images/galerie/image1.jpg" alt="On the road again" title="Sur la route de l'ouest, Arizona &copy; Guillaume Voisin" /></li>
-            </ul>
-            <br />
+        <div class="span6">
+            <div id="pic_carousel" class="carousel slide">
+                <ol class="carousel-indicators" id="index_picture_navigation">
+                    <li data-target="#pic_carousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#pic_carousel" data-slide-to="1"></li>
+                    <li data-target="#pic_carousel" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner" id="index_picture_url">
+                    <div class="active item"><img src="images/galerie/image1.jpg"/></div>
+                    <div class="item"><img src="images/galerie/image2.jpg"/></div>
+                    <div class="item"><img src="images/galerie/image3.jpg"/></div>
+                </div>
+                <a class="carousel-control left" href="#pic_carousel" data-slide="prev"></a>
+                <a class="carousel-control right" href="#pic_carousel" data-slide="next"></a>
+            </div>
         </div>
-        <div class="span4" id="index_writing">
-            <h4>
-                <br />
-                <br />
-                <p>长缨高冠，全宇轩昂意气扬</p>
-                <br />
-                <p>铁刃钢枪，驰骋疆场何人挡</p>
-                <br />
-                <p>狼毫软笔，尤飞凤舞书华章</p>
-                <br />
-                <p>448班，宏志高歌定称王！</p>
-                <br />
-                <p align="right">——孙胜扬</p>
-            </h4>
+        <div class="span5" id="index_writing">
+            <!-- Javascript -->
         </div>
         <br/>
     </div>
 </div>
+<?php }?>
     
 <ul class="breadcrumb" id="index_breadcrumb">
     <li><a href="#">首页</a> <span class="divider">/</span></li>
@@ -259,7 +263,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <h3 id="myModalLabel" class="well">登录</h3>
     </div>
     <div class="modal-body">
-        <div class="alert alert-info" id="loginInfo" style="display: none;">
+        <div class="alert alert-info" id="login_info" style="display: none;">
             <!--显示登录进度-->
         </div>
         <form class="form-horizontal" name="loginForm" id="loginForm" action='' method="POST">
@@ -268,7 +272,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                 <div class="control-group">
                     <label class="control-label" for="username">姓名</label>
                     <div class="controls">
-                        <input type="text" id="loginUsername" name="loginUsername" placeholder="" value="" class="input-large"
+                        <input type="text" id="login_username" name="login_username" placeholder="" value="" class="input-large"
                                maxlength="5" minlength="2"
                                data-validation-minlength-message = "姓名最少为2个汉字"
                                data-validation-maxlength-message = "姓名最多为5个汉字"
@@ -279,7 +283,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                 <div class="control-group">
                     <label class="control-label" for="password">密码</label>
                     <div class="controls">
-                        <input type="password" id="loginPassword" name="loginPassword" placeholder="" class="input-large"
+                        <input type="password" id="login_password" name="login_password" placeholder="" class="input-large"
                                maxlength="30" minlength="3"
                                data-validation-minlength-message="密码最少为3个字符"
                                data-validation-maxlength-message="密码最多为30个字符"
@@ -360,10 +364,4 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     </div>
 </div>    
 <!-- div container 在footer.tpl关闭 -->    
-<div class="banner">
-    <ul>
-        <li>This is a slide.</li>
-        <li>This is another slide.</li>
-        <li>This is a final slide.</li>
-    </ul>
-</div><?php }} ?>
+<?php }} ?>

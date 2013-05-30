@@ -5,11 +5,8 @@
         <title>{$title}</title>
         <link rel="stylesheet" type="text/css" href="templates/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="templates/css/style.css">
-        <link rel="stylesheet" type="text/css" href="templates/css/pic/style.css">               
         <script type="text/javascript" src="templates/js/jquery.js"></script>        
-        <script type="text/javascript" src="templates/js/bootstrap.min.js"></script>     
-        <script type="text/javascript" src="templates/js/picture/jquery.jDiaporama.js"></script>
-        <script type="text/javascript" src="templates/js/picture/script.js"></script>
+        <script type="text/javascript" src="templates/js/bootstrap.min.js"></script>    
         <script type="text/javascript" src="templates/js/tools/scroll_content.js"></script>  
         <script type="text/javascript" src="templates/js/tools/validation.js"></script>  
         <script type="text/javascript" src="templates/js/classmates.js"></script>
@@ -32,7 +29,7 @@
                             {/foreach}
                         </ul>
                         <div class="nav pull-right" id="main-menu-right">
-                            <div class="scrollDiv" id="navigationMotto">
+                            <div class="scrollDiv" id="navigation_motto">
                                 <!-- Javascript -->
                             </div>
                         </div>
@@ -72,11 +69,11 @@
                             <div class="row">
                                 <div class="span1">
                                     <a href="#" class="thumbnail">
-                                        <img id="headerUsernameAvatar" src="images/tourist.png" alt="">
+                                        <img id="header_username_avatar" src="images/tourist.png" alt="">
                                     </a>
                                 </div>
                                 <div class="span3">
-                                    <p><strong><span id="headerUsername"></span>，欢迎您的使用<br /><br /></strong></p>
+                                    <p><strong><span id="header_username"></span>，欢迎您的使用<br /><br /></strong></p>
                                     <a class="btn btn-success" href="#"> 个人信息管理</a>
                                     &nbsp;&nbsp;
                                     <a class="btn btn-primary" onclick="logout()"> 安全退出</a>

@@ -1,5 +1,5 @@
 <?php
-require_once "libs/Smarty.class.php";
+require_once "libs/smarty/Smarty.class.php";
 
 session_start();
 
