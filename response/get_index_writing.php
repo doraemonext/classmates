@@ -9,6 +9,7 @@
 require_once dirname(__FILE__).'/../config.php';
 require_once dirname(__FILE__).'/../functions.php';
 
+require dirname(__FILE__).'/../safe.php';
 require dirname(__FILE__).'/../tools/get_options.php';
 
 try {

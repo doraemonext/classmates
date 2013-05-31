@@ -11,6 +11,8 @@
 require_once dirname(__FILE__).'/config.php';
 require_once dirname(__FILE__).'/functions.php';
 
+require dirname(__FILE__).'/safe.php';
+
 $content = $_GET['content'];
 
 $code = $_GET['code'];

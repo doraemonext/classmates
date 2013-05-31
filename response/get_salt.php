@@ -7,6 +7,7 @@
  */
 
 require_once dirname(__FILE__).'/../config.php';
+require dirname(__FILE__).'/../safe.php';
 
 echo session_id();
 

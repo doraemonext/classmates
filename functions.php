@@ -25,22 +25,23 @@ function getNewSmarty()
 /*
  * 显示头部 HTML 内容
  */
-function showHeader($title, $subtitle, $uid)
+function showHeader($title, $subtitle, $pageLocated, $uid)
 {
     global $_config;
     
     $ui = getNewSmarty();
     $navigationPage = array(
-        $_config['page']['classmates'] => 'classmates.php',
-        $_config['page']['show_picture'] => 'show_picture.php',
-        $_config['page']['show_video'] => 'show_video.php',
-        $_config['page']['timeaxis'] => 'timeaxis.php'
+        $_config['page']['classmates'] => 'classmates',
+        $_config['page']['show_picture'] => 'show_picture',
+        $_config['page']['show_video'] => 'show_video',
+        $_config['page']['timeaxis'] => 'timeaxis'
     );
     
     $ui->assign('title', $title);
     $ui->assign('subtitle', $subtitle);
     $ui->assign('navigationPage', $navigationPage);
     $ui->assign('uid', $uid);
+    $ui->assign('pageLocated', $pageLocated);
     
     $ui->display('header.tpl');
 }

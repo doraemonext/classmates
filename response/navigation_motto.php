@@ -8,6 +8,8 @@
 
 require_once dirname(__FILE__).'/../config.php';
 
+require dirname(__FILE__).'/../safe.php';
+
 $return_value = array();
 @ $db = new mysqli($_config['db']['host'], $_config['db']['username'], 
                    $_config['db']['password'], $_config['db']['dbname']);

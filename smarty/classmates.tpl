@@ -1,19 +1,7 @@
 <div class="container">
     <ul class="breadcrumb" id="index_breadcrumb">
-        {if $pageLocated == 'index'}
-            <li class="active">首页 <span class="divider">/</span></li>
-        {else}
-            <li><a href="index.php">首页</a> <span class="divider">/</span></li>
-            {if $pageLocated == 'classmates'}
-                <li class="active">同学录</li>
-            {elseif $pageLocated == 'show_picture'}
-                <li class="active">精彩瞬间</li>
-            {elseif $pageLocated == 'show_video'}
-                <li class="active">视频掠影</li>
-            {elseif $pageLocated == 'timeaxis'}
-                <li class="active">时间轴</li>
-            {/if}
-        {/if}
+        <li><a href="index.php">首页</a> <span class="divider">/</span></li>
+        <li class="active">同学录</li>
     </ul>
         
     <div class="row">
@@ -21,48 +9,17 @@
             <div class="page-header">
                 <h3>同学录一览</h3>
             </div>
-            <div class="row" id="index_classmates">
-                <div class="span2">
-                    <a href="#" class="thumbnail">
-                        <img src="images/448/guoyaoxing.png" alt="">
-                    </a>
-                </div>
-                <div class="span2">
-                    <p>
-                        姓名：郭耀星 <br />
-                        性别：男 <br />
-                        民族：汉族 <br />
-                    </p>
-                    <p><a class="btn btn-primary" href="#">详细信息</a></p>
-                </div>
-                <div class="span2">
-                    <a href="#" class="thumbnail">
-                        <img src="images/448/guoyaoxing.png" alt="">
-                    </a>
-                </div>
-                <div class="span2">
-                    <p>
-                        姓名：郭耀星 <br />
-                        性别：男 <br />
-                        民族：汉族 <br />
-                    </p>
-                    <p><a class="btn btn-primary" href="#">详细信息</a></p>
-                </div>
-                <div class="span2">
-                    <a href="#" class="thumbnail">
-                        <img src="images/448/guoyaoxing.png" alt="">
-                    </a>
-                </div>
-                <div class="span2">
-                    <p>
-                        姓名：郭耀星 <br />
-                        性别：男 <br />
-                        民族：汉族 <br />
-                    </p>
-                    <p><a class="btn btn-primary" href="#">详细信息</a></p>
-                </div>
+            <div class="alert alert-error" id="page_across_border" style="display: none;">
+                
             </div>
-            <hr />
+            <script type="text/javascript">
+                if ({$flagAcrossBorder} == true) {
+                    var root = document.getElementById("page_across_border");
+                    var text = document.createTextNode("您请求的页面不存在，默认显示最后一页");
+                    root.style.display = "block";
+                    root.appendChild(text);
+                }
+            </script>
             <div class="row">
                 <div class="span2">
                     <a href="#" class="thumbnail">
@@ -70,11 +27,8 @@
                     </a>
                 </div>
                 <div class="span2">
-                    <p>
-                        姓名：郭耀星 <br />
-                        性别：男 <br />
-                        民族：汉族 <br />
-                    </p>
+                    <br />
+                    <h4><strong>&nbsp;&nbsp;&nbsp;郭耀星</strong></h4>
                     <p><a class="btn btn-primary" href="#">详细信息</a></p>
                 </div>
                 <div class="span2">
@@ -83,11 +37,7 @@
                     </a>
                 </div>
                 <div class="span2">
-                    <p>
-                        姓名：郭耀星 <br />
-                        性别：男 <br />
-                        民族：汉族 <br />
-                    </p>
+                    <h4 class="badge badge-info">郭耀星</h4>
                     <p><a class="btn btn-primary" href="#">详细信息</a></p>
                 </div>
                 <div class="span2">
@@ -96,11 +46,8 @@
                     </a>
                 </div>
                 <div class="span2">
-                    <p>
-                        姓名：郭耀星 <br />
-                        性别：男 <br />
-                        民族：汉族 <br />
-                    </p>
+                    <br />
+                    <h4><strong>&nbsp;&nbsp;&nbsp;郭耀星</strong></h4>
                     <p><a class="btn btn-primary" href="#">详细信息</a></p>
                 </div>
             </div>
@@ -116,6 +63,7 @@
                     <li><a href="#">Next</a></li>
                 </ul>
             </div>
+            
         </div>
     </div>
     <hr />
@@ -202,7 +150,7 @@
                                data-validation-minlength-message="密码最少为3个字符"
                                data-validation-maxlength-message="密码最多为30个字符"
                                required/>
-                        <p class="help-block">5 ~ 20位，不得有特殊字符</p>
+                        <p class="help-block">3 ~ 30位，不得有特殊字符</p>
                     </div>
                 </div>
                     
@@ -230,4 +178,3 @@
         </form>
     </div>
 </div>    
-<!-- div container 在footer.tpl关闭 -->    

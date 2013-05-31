@@ -1,6 +1,9 @@
 // 验证输入的bootstrap库
 $(document).ready(function() {
     $("input,select,textarea").not("[type=submit]").jqBootstrapValidation();
+    $._messengerDefaults = {
+        extraClasses: 'messenger-fixed messenger-theme-future messenger-on-bottom'
+    }
 });    
 
 window.onload = function() {
@@ -222,7 +225,7 @@ function logout() {
     xmlHttp.onreadystatechange = function() { 
         if (xmlHttp.readyState == 4) {
             if (xmlHttp.responseText == "OK") {
-                window.location.reload();
+                window.location.href = "index.php";
             }
         }
     };
@@ -313,6 +316,107 @@ function displayIndexPictureResult(xmlHttp) {
             div.appendChild(img);
         }
     }
+}
+
+// 为了满足城市选择js插件及日期选择插件的要求
+function runAccountBasicJS(residence) {
+    $('.form_datetime').datetimepicker({
+        format: 'yyyy-mm-dd',
+        language:  'zh-CN',
+        weekStart: 1,
+        todayBtn:  1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 4,
+        forceParse: 1,
+        minView: 2
+    });
+}
+
+// 显示“个人信息管理“页面的”基本资料“
+function accountChangeToBasic() {
+    var xmlHttp = getXmlHttpObject();
+    if (xmlHttp == null) {
+        window.location.href = "error.php?content=您的浏览器不支持 HTTP Request，请您升级浏览器后再访问 ^_^";
+        return;
+    }
+    
+    var url = "response/get_account_basic.php";
+    url = url + "?sid=" + Math.random();
+    xmlHttp.onreadystatechange = function() { accountChangeToBasicResult(xmlHttp); };
+    xmlHttp.open("GET", url, true);
+    xmlHttp.send(null);
+}
+function accountChangeToBasicResult(xmlHttp) {
+    var root = document.getElementById("account_content");
+    
+    if (xmlHttp.readyState < 4) {
+        var text = document.createTextNode("正在加载中……");
+        clearChildNode(root);
+        root.appendChild(text);
+        return;
+    }
+    
+    var info = JSON.parse(xmlHttp.responseText);
+    clearChildNode(root);
+    if (info["status"] == "ERROR") {
+        var text = document.createTextNode(info["statusInfo"]);
+        root.appendChild(text);
+    } else {
+        root.innerHTML = info["content"];
+    }
+    runAccountBasicJS(); // 为了满足日期选择插件的要求
+}
+
+// 提交“个人信息管理“页面的”基本资料“信息
+function submitAccountBasic() {
+    var xmlHttp = getXmlHttpObject();
+    if (xmlHttp == null) {
+        window.location.href = "error.php?content=您的浏览器不支持 HTTP Request，请您升级浏览器后再访问 ^_^";
+        return;
+    }
+    
+    var sex = getRadioValueByName("account_sex");
+    var birthday = getTextValueById("account_birthday");
+    var bloodType = getSelectIndexById("account_blood_type");
+    var residence = getTextValueById("account_residence");
+    var giveOthers = getTextValueById("account_give_others");
+    
+    var sendData = "sex=" + encodeURIComponent(sex) + 
+            "&birthday=" + encodeURIComponent(birthday) +
+            "&bloodType=" + encodeURIComponent(bloodType) + 
+            "&residence=" + encodeURIComponent(residence) +
+            "&giveOthers=" + encodeURIComponent(giveOthers);
+    
+    var url = "response/submit_account_basic.php";
+    xmlHttp.onreadystatechange = function() { submitAccountBasicResult(xmlHttp); };
+    xmlHttp.open("POST", url, true);
+    xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");    
+    xmlHttp.send(sendData);
+}
+
+function submitAccountBasicResult(xmlHttp) {
+    if (xmlHttp.readyState == 4) {
+        $('#account_submit_success').modal('show');
+    }
+}
+
+function getTextValueById(textId) {
+    return document.getElementById(textId).value;
+}
+function getSelectIndexById(selectId) {
+    return document.getElementById(selectId).selectedIndex;
+}
+function getRadioValueByName(radioName) {
+    var object = document.getElementsByName(radioName);
+    if (object != null) {
+        for (var i = 0; i < object.length; i++) {
+            if (object[i].checked) {
+                return object[i].value;
+            }
+        }
+    }
+    return null;
 }
 
 // Ajax getXmlHttpObject function

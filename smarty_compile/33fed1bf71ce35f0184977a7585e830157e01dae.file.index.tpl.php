@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-05-30 20:38:41
+<?php /* Smarty version Smarty-3.1.13, created on 2013-05-31 10:36:50
          compiled from "smarty/index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:24041766851a217c4ea4903-46274097%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '33fed1bf71ce35f0184977a7585e830157e01dae' => 
     array (
       0 => 'smarty/index.tpl',
-      1 => 1369917513,
+      1 => 1369962512,
       2 => 'file',
     ),
   ),
@@ -127,7 +127,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                                data-validation-minlength-message="密码最少为3个字符"
                                data-validation-maxlength-message="密码最多为30个字符"
                                required/>
-                        <p class="help-block">5 ~ 20位，不得有特殊字符</p>
+                        <p class="help-block">3 ~ 30位，不得有特殊字符</p>
                     </div>
                 </div>
                     

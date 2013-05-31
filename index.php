@@ -3,8 +3,11 @@
 require_once dirname(__FILE__).'/config.php';
 require_once dirname(__FILE__).'/functions.php';
 
+require dirname(__FILE__).'/safe.php';
 require dirname(__FILE__).'/tools/get_options.php';
 require dirname(__FILE__).'/tools/cookie.php';
+
+$pageLocated = 'index';
 
 // 取得标题和副标题信息
 try {
@@ -16,15 +19,15 @@ try {
 
 // 显示头部
 if (isset($_SESSION['userCookie'])) {
-    showHeader($title, $subtitle, 'known');
+    showHeader($title, $subtitle, $pageLocated, 'known');
 } else {
-    showHeader($title, $subtitle, 'unknown');
+    showHeader($title, $subtitle, $pageLocated, 'unknown');
 }
 
 $ui = getNewSmarty();
 $ui->assign('title', $title);
 $ui->assign('subtitle', $subtitle);
-$ui->assign('pageLocated', 'index');
+$ui->assign('pageLocated', $pageLocated);
 $ui->display('index.tpl');
 
 // 显示底部

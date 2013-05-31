@@ -106,7 +106,7 @@
                                data-validation-minlength-message="密码最少为3个字符"
                                data-validation-maxlength-message="密码最多为30个字符"
                                required/>
-                        <p class="help-block">5 ~ 20位，不得有特殊字符</p>
+                        <p class="help-block">3 ~ 30位，不得有特殊字符</p>
                     </div>
                 </div>
                     
