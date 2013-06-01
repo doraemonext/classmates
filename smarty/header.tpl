@@ -3,18 +3,16 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <title>{$title}</title>
-        <link rel="stylesheet" type="text/css" href="templates/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="templates/css/style.css">
-        <link rel="stylesheet" type="text/css" href="libs/messenger/build/css/messenger.css">
-        <link rel="stylesheet" type="text/css" href="libs/messenger/build/css/messenger-theme-future.css">
-        <script type="text/javascript" src="templates/js/jquery.js"></script>        
-        <script type="text/javascript" src="templates/js/bootstrap.min.js"></script>    
-        <script type="text/javascript" src="templates/js/jquery.masonry.min.js"></script>
-        <script type="text/javascript" src="templates/js/tools/scroll_content.js"></script>  
-        <script type="text/javascript" src="templates/js/tools/validation.js"></script>  
-        <script type="text/javascript" src="templates/js/classmates.js"></script>
-        <script type="text/javascript" src="templates/js/backbone-min.js"></script>
+        <script type="text/javascript" src="libs/jquery/jquery.js"></script>        
+        <script type="text/javascript" src="libs/bootstrap/js/bootstrap.min.js"></script>    
+        <script type="text/javascript" src="libs/messenger/build/js/underscore-min.js"></script>        
+        <script type="text/javascript" src="libs/messenger/build/js/backbone-min.js"></script>
         <script type="text/javascript" src="libs/messenger/build/js/messenger.min.js"></script>
+        <script type="text/javascript" src="templates/js/tools/scroll_content.js"></script>  
+        <script type="text/javascript" src="templates/js/tools/validation.js"></script>          
+        <script type="text/javascript" src="templates/js/tools/popup.js"></script>
+        <script type="text/javascript" src="templates/js/classmates.js"></script>      
     </head>
     
     <body>

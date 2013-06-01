@@ -1,3 +1,7 @@
+@import url('../../libs/bootstrap/css/bootstrap.min.css');
+@import url('../../libs/messenger/build/css/messenger.css');
+@import url('../../libs/messenger/build/css/messenger-theme-future.css');
+
 .white_framework {
   position: relative;
   margin: 15px 0;

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-05-31 22:12:17
+<?php /* Smarty version Smarty-3.1.13, created on 2013-06-01 10:55:03
          compiled from "smarty/header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:86943349151a30635a882a2-01521467%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '500bf49b2db79e84a4de92b818a79a85b01ab0c9' => 
     array (
       0 => 'smarty/header.tpl',
-      1 => 1370009534,
+      1 => 1370054865,
       2 => 'file',
     ),
   ),
@@ -36,19 +36,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <title><?php echo $_smarty_tpl->tpl_vars['title']->value;?>
 </title>
-        <link rel="stylesheet" type="text/css" href="templates/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="templates/css/style.css">
-        <link rel="stylesheet" type="text/css" href="libs/messenger/build/css/messenger.css">
-        <link rel="stylesheet" type="text/css" href="libs/messenger/build/css/messenger-theme-future.css">
-        <script type="text/javascript" src="templates/js/jquery.js"></script>        
-        <script type="text/javascript" src="templates/js/bootstrap.min.js"></script>    
-        <script type="text/javascript" src="templates/js/jquery.masonry.min.js"></script>
-        <script type="text/javascript" src="templates/js/tools/scroll_content.js"></script>  
-        <script type="text/javascript" src="templates/js/tools/validation.js"></script>  
-        <script type="text/javascript" src="templates/js/classmates.js"></script>
-        <script type="text/javascript" src="templates/js/backbone-min.js"></script>
+        <script type="text/javascript" src="libs/jquery/jquery.js"></script>        
+        <script type="text/javascript" src="libs/bootstrap/js/bootstrap.min.js"></script>    
+        <script type="text/javascript" src="libs/messenger/build/js/underscore-min.js"></script>        
+        <script type="text/javascript" src="libs/messenger/build/js/backbone-min.js"></script>
         <script type="text/javascript" src="libs/messenger/build/js/messenger.min.js"></script>
-        
+        <script type="text/javascript" src="templates/js/tools/scroll_content.js"></script>  
+        <script type="text/javascript" src="templates/js/tools/validation.js"></script>          
+        <script type="text/javascript" src="templates/js/tools/popup.js"></script>
+        <script type="text/javascript" src="templates/js/classmates.js"></script>      
     </head>
     
     <body>

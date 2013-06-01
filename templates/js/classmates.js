@@ -1,9 +1,6 @@
 // 验证输入的bootstrap库
 $(document).ready(function() {
     $("input,select,textarea").not("[type=submit]").jqBootstrapValidation();
-    $._messengerDefaults = {
-        extraClasses: 'messenger-fixed messenger-theme-future messenger-on-bottom'
-    }
 });    
 
 window.onload = function() {
@@ -11,6 +8,12 @@ window.onload = function() {
     displayAccount();
     displayIndexWriting();
     displayIndexPicture();
+}
+
+function getHtmlValue() {
+    this.textId = function(id) {
+        return document.getElementById(id).value;
+    }
 }
 
 // 在页面加载后显示导航条上的座右铭
@@ -318,7 +321,7 @@ function displayIndexPictureResult(xmlHttp) {
     }
 }
 
-// 为了满足城市选择js插件及日期选择插件的要求
+// 为了满足日期选择插件的要求
 function runAccountBasicJS(residence) {
     $('.form_datetime').datetimepicker({
         format: 'yyyy-mm-dd',
@@ -397,7 +400,14 @@ function submitAccountBasic() {
 
 function submitAccountBasicResult(xmlHttp) {
     if (xmlHttp.readyState == 4) {
-        $('#account_submit_success').modal('show');
+        var info = JSON.parse(xmlHttp.responseText);
+        
+        if (info["status"] == "ERROR") {
+            showPopupMessage("bottom-center", "error", info["statusInfo"]);
+        } else {
+            showPopupMessage("bottom-center", "success", "您的基本资料信息已成功修改");
+            accountChangeToBasic();
+        }
     }
 }
 
