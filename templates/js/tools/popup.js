@@ -1,5 +1,24 @@
+function showAjaxError() {
+    hidePopupMessage();
+    if (arguments[0] == null) {
+        showPopupMessage("bottom-center", "error", "连接服务器失败，请检查您的网络是否正常。如果错误依旧，请联系管理员处理。", 10);
+    } else {
+        showPopupMessage("bottom-center", "error", "连接服务器失败，请检查您的网络是否正常。如果错误依旧，请联系管理员处理。", arguments[0]);
+    }
+}
+
+function hidePopupMessage() {
+    Messenger().hideAll();
+}
 
 function showPopupMessage(position, type, str) {
+    hidePopupMessage();
+    var time;
+    if (arguments[3] == null) {
+        time = 3;
+    } else {
+        time = arguments[3];
+    }
     switch (position) {
         case "top-left":
             Messenger.options = {
@@ -50,7 +69,7 @@ function showPopupMessage(position, type, str) {
             Messenger().post({
                 message: str,
                 type: 'info',
-                hideAfter: 3,
+                hideAfter: time,
                 showCloseButton: true
             });
             break;
@@ -58,7 +77,7 @@ function showPopupMessage(position, type, str) {
             Messenger().post({
                 message: str,
                 type: 'error',
-                hideAfter: 3,
+                hideAfter: time,
                 showCloseButton: true
             });
             break;
@@ -66,7 +85,7 @@ function showPopupMessage(position, type, str) {
             Messenger().post({
                 message: str,
                 type: 'success',
-                hideAfter: 3,
+                hideAfter: time,
                 showCloseButton: true
             });
             break;
@@ -74,7 +93,7 @@ function showPopupMessage(position, type, str) {
             Messenger().post({
                 message: "程序调用非法，请联系管理员进行修复",
                 type: 'error',
-                hideAfter: 10,
+                hideAfter: 100,
                 showCloseButton: true
             });
             break;

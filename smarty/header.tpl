@@ -5,13 +5,6 @@
         <title>{$title}</title>
         <link rel="stylesheet" type="text/css" href="templates/css/style.css">
         <script type="text/javascript" src="libs/jquery/jquery.js"></script>        
-        <script type="text/javascript" src="libs/bootstrap/js/bootstrap.min.js"></script>    
-        <script type="text/javascript" src="libs/messenger/build/js/underscore-min.js"></script>        
-        <script type="text/javascript" src="libs/messenger/build/js/backbone-min.js"></script>
-        <script type="text/javascript" src="libs/messenger/build/js/messenger.min.js"></script>
-        <script type="text/javascript" src="templates/js/tools/scroll_content.js"></script>  
-        <script type="text/javascript" src="templates/js/tools/validation.js"></script>          
-        <script type="text/javascript" src="templates/js/tools/popup.js"></script>
         <script type="text/javascript" src="templates/js/classmates.js"></script>      
     </head>
     
@@ -56,10 +49,10 @@
                         <h1>{$title}</h1>
                         <p class="lead">{$subtitle}</p>
                     </div>
-                    <div class="span4">
+                    <div class="span4" id="account_info">
                         <br />
                         {if $uid == 'unknown'}
-                            <div class="row">
+                            <div class="row" id="account_info_unknown">
                                 <div class="span1">
                                     <a href="{$images_tourist}" class="thumbnail">
                                         <img src="images/tourist.png" />
@@ -67,13 +60,13 @@
                                 </div>
                                 <div class="span3">
                                     <p><strong>游客您好，您现在还没有登录<br /><br /></strong></p>
-                                    <a data-toggle="modal" href="#loginModal" class="btn btn-success"> 登录</a>
+                                    <a href="#" class="btn btn-success" onclick="$('#loginModal').modal('show')"> 登录</a>
                                     &nbsp;&nbsp;
-                                    <a data-toggle="modal" href="#regModal" class="btn btn-primary"> 注册</a>
+                                    <a href="#" class="btn btn-primary" onclick="$('#regModal').modal('show')"> 注册</a>
                                 </div>
                             </div>
                         {else}
-                            <div class="row">
+                            <div class="row" id="account_info_known">
                                 <div class="span1">
                                     <a href="#" class="thumbnail">
                                         <img id="header_username_avatar" src="" alt="">

@@ -12,9 +12,9 @@ require_once dirname(__FILE__).'/functions.php';
 require dirname(__FILE__).'/safe.php';
 require dirname(__FILE__).'/tools/cookie.php';
 
-@ $username = $_POST['username'];
-@ $password = $_POST['password'];
-@ $salt = $_POST['salt'];
+@ $username = unescape($_POST['username']);
+@ $password = unescape($_POST['password']);
+@ $salt = unescape($_POST['salt']);
 
 $returnValue = array();
 

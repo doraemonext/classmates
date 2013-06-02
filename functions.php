@@ -105,11 +105,11 @@ function printLog($log)
  */
 function encrypt($decStr, $strKey)
 {
-    return base64_encode(mcrypt_encrypt(MCRYPT_DES, $strKey, $decStr, MCRYPT_MODE_CBC));
+    return base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, $strKey, $decStr, MCRYPT_MODE_ECB));
 }  
 function decrypt($encStr, $strKey)
 {
-    return mcrypt_decrypt(MCRYPT_DES, $strKey, base64_decode($encStr), MCRYPT_MODE_CBC);
+    return mcrypt_decrypt(MCRYPT_RIJNDAEL_256, $strKey, base64_decode($encStr), MCRYPT_MODE_ECB);
 }
 
 function checkPassword($password, $salt, $database_password) {
@@ -134,5 +134,51 @@ function curPageURL()
     }
     return $pageURL;
 }
+
+function unescape($str) 
+{ 
+    $ret = ''; 
+    $len = strlen($str); 
+    for ($i = 0; $i < $len; $i ++) 
+    { 
+        if ($str[$i] == '%' && $str[$i + 1] == 'u') 
+        { 
+            $val = hexdec(substr($str, $i + 2, 4)); 
+            if ($val < 0x7f) 
+                $ret .= chr($val); 
+            else  
+                if ($val < 0x800) 
+                    $ret .= chr(0xc0 | ($val >> 6)) . 
+                     chr(0x80 | ($val & 0x3f)); 
+                else 
+                    $ret .= chr(0xe0 | ($val >> 12)) . 
+                     chr(0x80 | (($val >> 6) & 0x3f)) . 
+                     chr(0x80 | ($val & 0x3f)); 
+            $i += 5; 
+        } else  
+            if ($str[$i] == '%') 
+            { 
+                $ret .= urldecode(substr($str, $i, 3)); 
+                $i += 2; 
+            } else 
+                $ret .= $str[$i]; 
+    } 
+    return $ret; 
+} 
+
+function escape($string, $in_encoding = 'UTF-8',$out_encoding = 'UCS-2') { 
+    $return = ''; 
+    if (function_exists('mb_get_info')) { 
+        for($x = 0; $x < mb_strlen ( $string, $in_encoding ); $x ++) { 
+            $str = mb_substr ( $string, $x, 1, $in_encoding ); 
+            if (strlen ( $str ) > 1) { 
+                $return .= '%u' . strtoupper ( bin2hex ( mb_convert_encoding ( $str, $out_encoding, $in_encoding ) ) ); 
+            } else { 
+                $return .= '%' . strtoupper ( bin2hex ( $str ) ); 
+            } 
+        } 
+    } 
+    return $return; 
+} 
 
 ?>

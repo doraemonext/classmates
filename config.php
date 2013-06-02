@@ -21,7 +21,7 @@ $_config['page']['timeaxis'] = '时间轴';
 /** 通讯录页面每页显示多少人 **/
 $_config['disp']['perpage_limit'] = 18;
 
-define(MYSQL_ERROR, 1);
-define(GET_OPTIONS_ERROR, 2);
+define('MYSQL_ERROR', 1);
+define('GET_OPTIONS_ERROR', 2);
 
 ?>

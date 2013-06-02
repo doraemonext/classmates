@@ -38,7 +38,11 @@ try {
     $rows = $result->fetch_object();
     $returnValue['status'] = 'OK';
     $returnValue['username'] = $rows->name;
-    $returnValue['avatar'] = $rows->avatar;        
+    if ($rows->avatar == null) {
+        $returnValue['avatar'] = 'images/tourist.png';
+    } else {
+        $returnValue['avatar'] = $rows->avatar;   
+    }
     echo json_encode($returnValue);
     exit();
 } catch (Exception $e) {
