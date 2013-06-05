@@ -33,14 +33,18 @@ function showHeader($title, $subtitle, $pageLocated, $uid)
     $navigationPage = array(
         $_config['page']['classmates'] => 'classmates',
         $_config['page']['show_picture'] => 'show_picture',
-        $_config['page']['show_video'] => 'show_video',
-        $_config['page']['timeaxis'] => 'timeaxis'
+        $_config['page']['show_video'] => 'show_video'
     );
     
     $ui->assign('title', $title);
     $ui->assign('subtitle', $subtitle);
     $ui->assign('navigationPage', $navigationPage);
     $ui->assign('uid', $uid);
+    if (isset($_SESSION['admin'])) {
+        $ui->assign('admin', 'true');
+    } else {
+        $ui->assign('admin', 'false');
+    }
     $ui->assign('pageLocated', $pageLocated);
     
     $ui->display('header.tpl');
@@ -98,6 +102,21 @@ function echoException($e)
 function printLog($log) 
 {
     file_put_contents('error.log', date("Y-m-d H:i:s"). " " . $log. "\r\n", FILE_APPEND | LOCK_EX);
+}
+
+/*
+ * 获取头像信息
+ */
+function getAvatarPath($id) {
+    chdir(dirname(__FILE__));
+    
+    $id = sprintf("%09d", $id);
+    $path = 'images/avatar/'.substr($id, 0, 3).'/'.substr($id, 3, 2).'/'.substr($id, 5, 2).'/'.substr($id, 7, 2).'_avatar_middle.jpg';
+    if (file_exists($path)) {
+        return $path;
+    } else {
+        return 'images/tourist.png';
+    }
 }
 
 /*
@@ -180,5 +199,26 @@ function escape($string, $in_encoding = 'UTF-8',$out_encoding = 'UCS-2') {
     } 
     return $return; 
 } 
+
+function isDate($str, $format='Y-m-d'){
+	$unixTime_1 = strtotime($str);
+	if (!is_numeric($unixTime_1)) 
+        return false; 
+	$checkDate = date($format, $unixTime_1);
+	$unixTime_2 = strtotime($checkDate);
+	if ($unixTime_1 == $unixTime_2) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+function isEmail($email){
+	if (preg_match("/^[0-9a-zA-Z]+@(([0-9a-zA-Z]+)[.])+[a-z]{2,4}$/i", $email)) {
+    	return true;
+    } else {
+        return false;
+	}
+}
 
 ?>

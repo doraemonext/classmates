@@ -26,11 +26,6 @@ for ($i = 0; $i < count($submit); $i++) {
     switch ($submit[$i]['name']) {
         case 'account_sex':
             $sex = $submit[$i]['value'];
-            if ($sex == 'man') {
-                $sex = 0;
-            } else {
-                $sex = 1;
-            }
             break;
         case 'account_birthday':
             $birthday = $submit[$i]['value'];
@@ -50,6 +45,39 @@ for ($i = 0; $i < count($submit); $i++) {
             echo json_encode($returnValue);
             exit();
     }
+}
+
+$sex = addslashes($sex);
+$birthday = addslashes($birthday);
+$bloodType = addslashes($bloodType);
+$residence = addslashes($residence);
+$giveOthers = addslashes($giveOthers);
+
+$unknownInput = false;
+
+if ($sex == 'man') {
+    $sex = 0;
+} else if ($sex == 'woman') {
+    $sex = 1;
+} else {
+    $returnValue['status'] = 'ERROR';
+    $returnValue['statusInfo'] = '性别只能选择“男”或“女”';
+    echo json_encode($returnValue);
+    exit();
+}
+
+if (!isDate($birthday)) {
+    $returnValue['status'] = 'ERROR';
+    $returnValue['statusInfo'] = '请您输入一个正确的日期';
+    echo json_encode($returnValue);
+    exit();
+}
+
+if (!is_numeric($bloodType) || $bloodType < 0 || $bloodType > 5) {
+    $returnValue['status'] = 'ERROR';
+    $returnValue['statusInfo'] = '请您选择一个正确的血型';
+    echo json_encode($returnValue);
+    exit();
 }
 
 try {

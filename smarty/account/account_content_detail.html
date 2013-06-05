@@ -1,0 +1,75 @@
+<div class="page-header">
+    <h3>详细资料 <small>本页资料均可选填</small></h3>
+</div>
+<form class="form-horizontal span8" id="account_detail_form">
+    <div class="control-group">
+        <label class="control-label">民族</label>
+        <div class="controls">
+            <input type="text" id="account_nation" name="account_nation" value="">
+            <span class="help-block"></span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">体重</label>
+        <div class="controls">
+            <input type="number" id="account_weight" name="account_weight" value="" data-validation-number-message="请输入一个数字">
+            <span class="help-inline"> kg</span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">身高</label>
+        <div class="controls">
+            <input type="number" id="account_height" name="account_height" value="" data-validation-number-message="请输入一个数字">
+            <span class="help-inline"> cm</span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">专业</label>
+        <div class="controls">
+            <input type="text" id="account_speciality" name="account_speciality" value="">
+            <span class="help-block"></span>
+        </div>
+    </div>    
+    <div class="control-group">
+        <label class="control-label">Email</label>
+        <div class="controls">
+            <input type="email" id="account_email" name="account_email" value="" data-validation-email-message="请输入一个正确的Email地址">
+            <p class="help-block"></p>
+        </div>
+    </div>       
+    <div class="control-group">
+        <label class="control-label">QQ</label>
+        <div class="controls">
+            <input type="number" id="account_qq" name="account_qq" value="" data-validation-number-message="请输入一个正确的QQ号">
+            <span class="help-block"></span>
+        </div>
+    </div>        
+    <div class="control-group">
+        <label class="control-label">手机 1</label>
+        <div class="controls">
+            <input type="number" id="account_phone_1" name="account_phone_1" value="" data-validation-number-message="请输入一个正确的手机号码">
+            <span class="help-block"></span>
+        </div>
+    </div>    
+    <div class="control-group">
+        <label class="control-label">手机 2</label>
+        <div class="controls">
+            <input type="number" id="account_phone_2" name="account_phone_2" value="" data-validation-number-message="请输入一个正确的手机号码">
+            <span class="help-block"></span>
+        </div>
+    </div>    
+    <div class="control-group">
+        <label class="control-label">手机 3</label>
+        <div class="controls">
+            <input type="number" id="account_phone_3" name="account_phone_3" value="" data-validation-number-message="请输入一个正确的手机号码">
+            <span class="help-block"></span>
+        </div>
+    </div>          
+    <div class="control-group">
+        <div class="controls row">
+            <div class="span2">
+                <button class="btn btn-primary btn-block" type="button" onclick="submitAccountDetail()">提交修改</button>
+            </div>
+        </div>
+    </div>
+</form>

@@ -12,61 +12,52 @@
             <div class="alert alert-error" id="page_across_border" style="display: none;">
                 
             </div>
-            <script type="text/javascript">
-                if ({$flagAcrossBorder} == true) {
-                    var root = document.getElementById("page_across_border");
-                    var text = document.createTextNode("您请求的页面不存在，默认显示最后一页");
-                    root.style.display = "block";
-                    root.appendChild(text);
-                }
-            </script>
-            <div class="row">
-                <div class="span2">
-                    <a href="#" class="thumbnail">
-                        <img src="images/448/guoyaoxing.png" alt="">
-                    </a>
+            {if $isDisplay == "false"} 
+                <div class="row">
+                    <div class="span12">
+                         <div class="alert alert-error">
+                             非常抱歉，无法显示您所需要的信息，请确保您已经 <strong><a href="#" onclick="$('#loginModal').modal('show')">登录</a></strong> ，如果问题依旧，请尝试重新登录并正确通过链接打开本页面。
+                         </div> 
+                    </div>
                 </div>
-                <div class="span2">
-                    <br />
-                    <h4><strong>&nbsp;&nbsp;&nbsp;郭耀星</strong></h4>
-                    <p><a class="btn btn-primary" href="#">详细信息</a></p>
+            {else}
+                {foreach from=$data key=nouse item=value}
+                    <div class="row">
+                        {foreach from=$value key=nouse_1 item=content}
+                            <div class="span2">
+                                <a href="account_detail.php?id={$content[0]}" class="thumbnail">
+                                    <img src="{$content[2]}" alt="">
+                                </a>
+                            </div>
+                            <div class="span2">
+                                <br />
+                                <h4><strong>&nbsp;&nbsp;&nbsp;{$content[1]}</strong></h4>
+                                <p><a class="btn btn-primary" href="account_detail.php?id={$content[0]}">详细信息</a></p>
+                            </div>
+                        {/foreach}
+                    </div>
+                    <hr />
+                {/foreach}
+                <div class="pagination" id="index_pagination">
+                    <ul>
+                        {if $page neq 1}
+                            <li><a href="classmates.php?page={"`$page-1`"}">上一页</a></li>
+                        {/if} 
+                        {section name=loop loop=$totalPageSum}
+                            {if $smarty.section.loop.index+1 eq $page}
+                                <li class="active"><a>{"`$smarty.section.loop.index+1`"}</a></li>
+                            {else}
+                                <li><a href="classmates.php?page={"`$smarty.section.loop.index+1`"}">{"`$smarty.section.loop.index+1`"}</a></li>
+                            {/if}
+                        {/section}
+                        {if $page neq $totalPageSum}
+                            <li><a href="classmates.php?page={"`$page+1`"}">下一页</a></li>
+                        {/if} 
+                    </ul>
                 </div>
-                <div class="span2">
-                    <a href="#" class="thumbnail">
-                        <img src="images/448/guoyaoxing.png" alt="">
-                    </a>
-                </div>
-                <div class="span2">
-                    <h4 class="badge badge-info">郭耀星</h4>
-                    <p><a class="btn btn-primary" href="#">详细信息</a></p>
-                </div>
-                <div class="span2">
-                    <a href="#" class="thumbnail">
-                        <img src="images/448/guoyaoxing.png" alt="">
-                    </a>
-                </div>
-                <div class="span2">
-                    <br />
-                    <h4><strong>&nbsp;&nbsp;&nbsp;郭耀星</strong></h4>
-                    <p><a class="btn btn-primary" href="#">详细信息</a></p>
-                </div>
-            </div>
-            <hr />
-            <div class="pagination" id="index_pagination">
-                <ul>
-                    <li><a href="#">Prev</a></li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">Next</a></li>
-                </ul>
-            </div>
-            
+            {/if}
         </div>
     </div>
-    <hr />
 </div>
     
 

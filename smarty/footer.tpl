@@ -6,7 +6,17 @@
         </div>
         <div id="modal"></div>
         <script type="text/javascript">
-            $("#modal").load("smarty/modal.html");
+            $.ajax({
+               type: "GET",
+               url: "smarty/modal.html",
+               dataType: "html",
+               async: false,
+               cache: false,
+               success: function(info) {
+                   $("#modal").html(info);
+                   makeValidation();
+               }
+            });
         </script>
     </body>
 </html>

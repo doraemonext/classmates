@@ -1,4 +1,8 @@
 <div class="container">
+    <ul class="breadcrumb" id="index_breadcrumb">
+        <li class="active">首页</li>
+    </ul>
+    
     <div class="white_framework">
         <div class="row">
             <div class="span6">

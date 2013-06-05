@@ -15,24 +15,29 @@ require dirname(__FILE__).'/tools/cookie.php';
 
 $pageLocated = 'classmates';
 
+$isDisplay = "true";
+if (!isset($_SESSION['userCookie'])) {
+    $isDisplay = "false";
+}
+
 // 获取当先需要显示的页码
 @ $page = $_GET['page'];
 if ($page == null) {
     $page = 1;
 }
+
 if (!is_numeric($page) || $page < 1) {
-    echo '<meta http-equiv=refresh content=0;url="error.php?content=页面传入错误">';
-    exit();
+    $isDisplay = "false";
 }
 
 // 每页显示数目
-$perPageLimit = $_config['disp']['perpage_disp'];
+$perPageLimit = $_config['disp']['perpage_limit'];
 try {
     $db = mysqlConnect($_config['db']['host'], $_config['db']['username'],
                        $_config['db']['password'], $_config['db']['dbname']);
     $query = 'SET NAMES UTF8';
     $db->query($query);
-    $query = 'SELECT * FROM `classmates`';
+    $query = 'SELECT `id`, `name` FROM `classmates`';
     $result = $db->query($query);
 } catch (Exception $e) {
     echoException($e);
@@ -43,14 +48,25 @@ $total = $result->num_rows;
 $totalPageSum = ceil($total / $perPageLimit);
 
 // 是否越界
-$flagAcrossBorder = false;
 if ($page > $totalPageSum) {
-    $page = $totalPageSum;
-    $flagAcrossBorder = true;
+    $isDisplay = "false";
 }
 
 // 第一条记录位置偏移量
 $offset = ($page - 1) * $perPageLimit;
+
+$data = array();
+$step = -1;
+for ($i = 0; $i < min($offset + $perPageLimit, $total); $i++) {
+    $rows = $result->fetch_object();
+    if ($i >= $offset) {
+        if (($i - $offset) % 3 == 0) {
+            $step++;
+            $data[$step] = array();
+        }
+        array_push($data[$step], array($rows->id, $rows->name, getAvatarPath($rows->id)));
+    }
+}
 
 // 取得标题和副标题信息
 try {
@@ -73,11 +89,12 @@ $ui->assign('subtitle', $subtitle);
 $ui->assign('pageLocated', $pageLocated);
 
 $ui->assign('page', $page);
+$ui->assign('isDisplay', $isDisplay);
 $ui->assign('perPageLimit', $perPageLimit);
 $ui->assign('total', $total);
 $ui->assign('totalPageSum', $totalPageSum);
-$ui->assign('flagAcrossBorder', $flagAcrossBorder);
 $ui->assign('offset', $offset);
+$ui->assign('data', $data);
 
 $ui->display('classmates.tpl');
 

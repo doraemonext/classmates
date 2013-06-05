@@ -1,23 +1,9 @@
+// 使得 $.getScript 获取脚本时可以进行缓存
+$.ajaxSetup({
+    cache: true
+});
+
 $(function() {
-    // 使得 $.getScript 获取脚本时可以进行缓存
-    // 对于其他 ajax 内容，请求时自行添加 &sid=Math.random() 来防止缓存  
-    $.ajaxSetup({
-        cache: true
-    });
-    
-    $.getScript("libs/bootstrap/js/bootstrap.min.js");
-    $.getScript("libs/messenger/build/js/underscore-min.js");
-    $.getScript("libs/messenger/build/js/backbone-min.js");
-    $.getScript("libs/messenger/build/js/messenger.min.js");
-    $.getScript("libs/jquery/jquery.json.js");
-    $.getScript("templates/js/tools/scroll_content.js");
-    $.getScript("templates/js/tools/validation.js", function() {
-        $("input,select,textarea").not("[type=submit]").jqBootstrapValidation();
-    });    
-    $.getScript("templates/js/tools/popup.js");
-    $.getScript("templates/js/tools/get_html_value.js");
-    $.getScript("templates/js/tools/encrypt.js");
-    
     navigationMotto();
     displayAccountInfo();
     displayIndexWriting();
@@ -26,6 +12,9 @@ $(function() {
 
 function jumpToErrorPage(content) {
     window.location.href = "error.php?content=" + content;
+}
+function makeValidation() {
+    $("input,select,textarea").not("[type=submit]").jqBootstrapValidation();
 }
 
 // 在页面加载后显示导航条上的座右铭
@@ -100,14 +89,6 @@ function displayLoginInfo() {
            }
        }
     });
-}
-
-// 删除节点root的所有子节点
-function clearChildNode(root) {
-    var child = root.childNodes;
-    for (var i = child.length - 1; i >= 0; i--) {
-        root.removeChild(child[i]);
-    }
 }
 
 // 注册用户
@@ -188,6 +169,7 @@ function displayIndexWriting() {
     });
 }
 
+// 显示首页轮播图片
 function displayIndexPicture() {
     if ($("#index_picture_navigation").length == 0) {
         return;
@@ -238,8 +220,51 @@ function runAccountBasicJS() {
     });
 }
 
+function showAccountPageOnly(id) {
+    var idArray = new Array( 
+        "account_content_basic",
+        "account_content_detail",
+        "account_content_hobby",
+        "account_password"
+    );
+        
+    for (var i = 0; i < idArray.length; i++) {
+        if (idArray[i] == id) {
+            $.ajax({
+               type: "GET",
+               url: "smarty/account/" + idArray[i] + ".html",
+               dataType: "html",
+               async: false,
+               cache: false,
+               success: function(info) {
+                   $("#" + idArray[i]).html(info);
+                   makeValidation();
+               }
+            });
+        } else {
+            $("#" + idArray[i]).empty();
+        }
+    }
+    $("#account_content_avatar").empty();
+    $("#account_content_avatar_upload").empty();
+    
+    if (id == "account_content_avatar") {
+        $.ajax({
+           type: "GET",
+           url: "smarty/account/account_content_avatar.html",
+           dataType: "html",
+           async: false,
+           cache: false,
+           success: function(info) {
+               $("#account_content_avatar").html(info);
+           }
+       });
+    }
+}
+
 // 显示“个人信息管理“页面的”基本资料“
 function accountChangeToBasic() {
+    showAccountPageOnly("account_content_basic");
     $.ajax({
        type: "GET",
        url: "response/get_account_basic.php",
@@ -253,7 +278,7 @@ function accountChangeToBasic() {
                showPopupMessage("bottom-center", "error", info["statusInfo"]);
            } else {
                $("#account_name").attr("value", info["name"]);
-               if (info["sex"] == 0) {    // 男
+               if (info["sex"] == null || info["sex"] == 0) {    // 男
                    $("input[type=radio][name=account_sex][value=man]").attr("checked", true); 
                } else {                   // 女
                    $("input[type=radio][name=account_sex][value=woman]").attr("checked", true); 
@@ -286,6 +311,172 @@ function submitAccountBasic() {
                showPopupMessage("bottom-center", "error", info["statusInfo"]);
            } else {
                showPopupMessage("bottom-center", "success", "您的信息已成功修改");
+           }
+       }
+    });
+}
+
+// 显示“个人信息管理“页面的”详细资料“
+function accountChangeToDetail() {
+    showAccountPageOnly("account_content_detail");
+    $.ajax({
+       type: "GET",
+       url: "response/get_account_detail.php",
+       cache: false,
+       dataType: "json",
+       error: function() {
+           showAjaxError();
+       },
+       success: function(info, textStatus) {
+           if (info["status"] == "ERROR") {
+               showPopupMessage("bottom-center", "error", info["statusInfo"]);
+           } else {
+               $("#account_nation").attr("value", info["nation"]);
+               $("#account_weight").attr("value", info["weight"]);               
+               $("#account_height").attr("value", info["height"]);               
+               $("#account_speciality").attr("value", info["speciality"]);               
+               $("#account_email").attr("value", info["email"]);
+               $("#account_qq").attr("value", info["qq"]);      
+               $("#account_phone_1").attr("value", info["phone_1"]);
+               $("#account_phone_2").attr("value", info["phone_2"]);
+               $("#account_phone_3").attr("value", info["phone_3"]);               
+           }
+       }
+    });
+}
+
+// 提交“个人信息管理“页面的”详细资料“信息
+function submitAccountDetail() {
+    var sendData = $.toJSON($("#account_detail_form").serializeArray());
+    $.ajax({
+       type: "POST",
+       url: "response/submit_account_detail.php",
+       data: {
+           "json": escape(sendData)
+       },
+       cache: false,
+       dataType: "json",
+       error: function() {
+           showAjaxError();
+       },
+       success: function(info, textStatus) {
+           if (info["status"] == "ERROR") {
+               showPopupMessage("bottom-center", "error", info["statusInfo"]);
+           } else {
+               showPopupMessage("bottom-center", "success", "您的信息已成功修改");
+           }
+       }
+    });
+}
+
+// 显示“个人信息管理”页面的“兴趣爱好”信息
+function accountChangeToHobby() {
+    showAccountPageOnly("account_content_hobby");
+    $.ajax({
+       type: "GET",
+       url: "response/get_account_hobby.php",
+       cache: false,
+       dataType: "json",
+       error: function() {
+           showAjaxError();
+       },
+       success: function(info, textStatus) {
+           if (info["status"] == "ERROR") {
+               showPopupMessage("bottom-center", "error", info["statusInfo"]);
+           } else {
+               $("#account_books").val(info["books"]);
+               $("#account_music").val(info["music"]);               
+               $("#account_movie").val(info["movie"]);               
+               $("#account_brands").val(info["brands"]); 
+               $("#account_sports").val(info["sports"]);
+               $("#account_worship").val(info["worship"]);
+               $("#account_others").val(info["others"]);      
+           }
+       }
+    });   
+}
+
+// 提交“个人信息管理”页面的“兴趣爱好”信息
+function submitAccountHobby() {
+    var sendData = $.toJSON($("#account_hobby_form").serializeArray());
+    $.ajax({
+       type: "POST",
+       url: "response/submit_account_hobby.php",
+       data: {
+           "json": escape(sendData)
+       },
+       cache: false,
+       dataType: "json",
+       error: function() {
+           showAjaxError();
+       },
+       success: function(info, textStatus) {
+           if (info["status"] == "ERROR") {
+               showPopupMessage("bottom-center", "error", info["statusInfo"]);
+           } else {
+               showPopupMessage("bottom-center", "success", "您的信息已成功修改");
+           }
+       }
+    });
+}
+
+// 显示“个人信息管理”页面的“个人头像”信息
+function accountChangeToAvatar(userId) {
+    showAccountPageOnly("account_content_avatar");
+    $.ajax({
+        type: "GET",
+        url: "response/get_submit_account_avatar.php",
+        dataType: "json",
+        error: function() {
+            showAjaxError();
+        },
+        success: function(info) {
+            if (info["status"] == "ERROR") {
+               showPopupMessage("bottom-center", "error", info["statusInfo"]);
+            } else {
+                if (info['exist']) {
+                    $("#account_avatar_no_avatar").css("display", "none");
+                    $("#account_avatar_have_avatar").css("display", "block");
+                    $("#avatar_120").attr("src", info['path']);
+                } else {
+                    $("#account_avatar_no_avatar").css("display", "block");
+                    $("#account_avatar_have_avatar").css("display", "none");
+                }
+            }
+        }
+    });
+    $("#account_content_avatar_upload").load("libs/avatar/upload.php?uid=" + userId);
+}
+
+function accountChangeToPassword() {
+    showAccountPageOnly("account_password");
+    makeValidation();
+}
+
+// 提交“个人信息管理”页面的“密码修改”信息
+function submitAccountPassword() {
+    var originPassword = $("#account_origin_password").val();
+    var newPassword = $("#account_new_password").val();
+    var confirmPassword = $("#account_confirm_password").val();
+    
+    $.ajax({
+       type: "POST",
+       url: "response/submit_account_password.php",
+       data: {
+           "originPassword": escape(md5(originPassword)),
+           "newPassword": escape(md5(newPassword)),
+           "confirmPassword": escape(md5(confirmPassword))
+       },
+       cache: false,
+       dataType: "json",
+       error: function() {
+           showAjaxError(10);
+       },
+       success: function(info) {
+           if (info["status"] == "OK") {
+               showPopupMessage("bottom-center", "success", "您的密码已经成功修改。");
+           } else {
+               showPopupMessage("bottom-center", "error", info["statusInfo"]);
            }
        }
     });

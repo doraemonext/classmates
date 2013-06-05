@@ -12,6 +12,8 @@ require_once dirname(__FILE__).'/../functions.php';
 require dirname(__FILE__).'/../safe.php';
 require dirname(__FILE__).'/../tools/cookie.php';
 
+$_SESSION['userId'] = intval($_SESSION['userId']);
+
 $returnValue = array();
 
 if (!isset($_SESSION['userCookie'])) {
@@ -26,7 +28,7 @@ try {
                        $_config['db']['password'], $_config['db']['dbname']);
     $query = 'SET NAMES UTF8';
     $db->query($query);
-    $query = 'SELECT `name`, `avatar` FROM `classmates` WHERE `id` = '.intval($_SESSION['userId']);
+    $query = 'SELECT `name` FROM `classmates` WHERE `id` = '.$_SESSION['userId'];
     $result = $db->query($query);
     if ($result->num_rows != 1) {
         $returnValue['status'] = 'ERROR';
@@ -38,11 +40,7 @@ try {
     $rows = $result->fetch_object();
     $returnValue['status'] = 'OK';
     $returnValue['username'] = $rows->name;
-    if ($rows->avatar == null) {
-        $returnValue['avatar'] = 'images/tourist.png';
-    } else {
-        $returnValue['avatar'] = $rows->avatar;   
-    }
+    $returnValue['avatar'] = getAvatarPath($_SESSION['userId']);
     echo json_encode($returnValue);
     exit();
 } catch (Exception $e) {

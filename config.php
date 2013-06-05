@@ -16,7 +16,6 @@ $_config['safe']['rand_cookie'] = 'RWEHQE12F';
 $_config['page']['classmates'] = '同学录';
 $_config['page']['show_picture'] = '精彩瞬间';
 $_config['page']['show_video'] = '视频掠影';
-$_config['page']['timeaxis'] = '时间轴';
 
 /** 通讯录页面每页显示多少人 **/
 $_config['disp']['perpage_limit'] = 18;

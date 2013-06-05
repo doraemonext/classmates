@@ -74,27 +74,6 @@ try {
         $returnValue['statusInfo'] = '您的用户名在数据库中已经存在';
         echo json_encode($returnValue);
         exit();
-        
-        /*$object = $result->fetch_object();
-        if (checkPassword($password, $salt, $object->password)) {
-            $userCookie = array(
-                "user_id" => $object->id,
-                "login_ip" => $_SERVER['REMOTE_ADDR'],
-                "login_time" => date('Y-m-d H:i:s')
-            );
-            $jsonStr = json_encode($userCookie);
-            $cookieValue = encrypt($jsonStr, $_config['safe']['rand_cookie']);
-            $_SESSION['userCookie'] = $cookieValue;
-            
-            $returnValue['status'] = 'OK';
-            echo json_encode($returnValue);
-            exit();
-        } else {
-            $returnValue['status'] = 'ERROR';
-            $returnValue['statusInfo'] = '对不起，密码错误';   
-            echo json_encode($returnValue);
-            exit();
-        }*/
     } else {
         $returnValue['status'] = 'ERROR';
         $returnValue['statusInfo'] = '出现意外错误，请联系管理员处理';   

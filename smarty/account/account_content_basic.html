@@ -1,0 +1,74 @@
+<div class="page-header">
+    <h3>基本资料</h3>
+</div>
+<form class="form-horizontal span8" id="account_basic_form">
+    <div class="control-group">
+        <label class="control-label" for="account_name">姓名</label>
+        <div class="controls">
+            <input type="text" id="account_name" name="account_name" disabled>
+            <span class="help-block">姓名默认不可修改，如需修改请联系管理员</span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">性别</label>
+        <div class="controls">
+            <label class="radio inline">
+                <input value="man" checked="checked" name="account_sex" type="radio">男
+            </label>
+            <label class="radio inline">
+                <input value="woman" name="account_sex" type="radio">女
+            </label>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">生日</label>
+        <div class="controls">
+            <input type="text" id="account_birthday" name="account_birthday" value="" class="form_datetime">
+            <script type="text/javascript">
+                $('.form_datetime').datetimepicker({
+                    format: 'yyyy-mm-dd',
+                    language:  'zh-CN',
+                    weekStart: 1,
+                    todayBtn:  1,
+                    autoclose: 1,
+                    todayHighlight: 1,
+                    startView: 4,
+                    forceParse: 1,
+                    minView: 2
+                });
+            </script>
+        </div>
+    </div>  
+    <div class="control-group">
+        <label class="control-label">血型</label>
+        <div class="controls">
+            <select id="account_blood_type" name="account_blood_type">
+                <option value="0" selected>未知</option>
+                <option value="1">A</option>
+                <option value="2">B</option>
+                <option value="3">O</option>
+                <option value="4">AB</option>
+                <option value="5">其他</option>
+            </select>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">居住地址</label>
+        <div class="controls">
+            <input type="text" id="account_residence" name="account_residence" value="">
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">给大家的话</label>
+        <div class="controls">
+            <textarea rows="7" class="input-xlarge" id="account_give_others" name="account_give_others"></textarea>
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="controls row">
+            <div class="span2">
+                <button class="btn btn-primary btn-block" type="button" onclick="submitAccountBasic()">提交修改</button>
+            </div>
+        </div>
+    </div>
+</form>

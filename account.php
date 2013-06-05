@@ -15,6 +15,11 @@ require dirname(__FILE__).'/tools/cookie.php';
 
 $pageLocated = 'account';
 
+$isDisplay = "true";
+if (!isset($_SESSION['userCookie'])) {
+    $isDisplay = "false";
+}
+
 // 取得标题和副标题信息
 try {
     $title = getOption($_options, 'title');
@@ -34,6 +39,10 @@ $ui = getNewSmarty();
 $ui->assign('title', $title);
 $ui->assign('subtitle', $subtitle);
 $ui->assign('pageLocated', $pageLocated);
+$ui->assign('isDisplay', $isDisplay);
+if ($isDisplay == "true") {
+    $ui->assign('userId', $_SESSION['userId']);
+}
 $ui->display('account.tpl');
 
 // 显示底部

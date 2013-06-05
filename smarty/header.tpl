@@ -4,8 +4,20 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <title>{$title}</title>
         <link rel="stylesheet" type="text/css" href="templates/css/style.css">
-        <script type="text/javascript" src="libs/jquery/jquery.js"></script>        
-        <script type="text/javascript" src="templates/js/classmates.js"></script>      
+        <script type="text/javascript" src="libs/jquery/jquery.js"></script>    
+        <script type="text/javascript" src="libs/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="libs/messenger/build/js/underscore-min.js"></script>
+        <script type="text/javascript" src="libs/messenger/build/js/backbone-min.js"></script>
+        <script type="text/javascript" src="libs/messenger/build/js/messenger.min.js"></script>
+        <script type="text/javascript" src="libs/jquery/jquery.leanModal.min.js"></script>
+        <script type="text/javascript" src="libs/jquery/jquery.json.js"></script>        
+        <script type="text/javascript" src="templates/js/tools/scroll_content.js"></script>
+        <script type="text/javascript" src="templates/js/tools/validation.js"></script>
+        <script type="text/javascript" src="templates/js/tools/popup.js"></script>
+        <script type="text/javascript" src="templates/js/tools/get_html_value.js"></script>
+        <script type="text/javascript" src="templates/js/tools/encrypt.js"></script>
+        <script type="text/javascript" src="templates/js/classmates.js"></script>
+    
     </head>
     
     <body>
@@ -27,6 +39,9 @@
                                     <li><a href="{$address}.php"><strong>{$name}</strong></a></li>
                                 {/if}
                             {/foreach}
+                            {if $admin == 'true'}
+                                <li><a href="admin.php"><strong>管理后台</strong></a></li>
+                            {/if}
                         </ul>
                         <div class="nav pull-right" id="main-menu-right">
                             <div class="scrollDiv" id="navigation_motto">
@@ -46,7 +61,7 @@
             <header class="jumbotron subhead" id="overview">
                 <div class="row">
                     <div class="span7">
-                        <h1>{$title}</h1>
+                        <h1><a style="text-decoration: none" href="index.php">{$title}</a></h1>
                         <p class="lead">{$subtitle}</p>
                     </div>
                     <div class="span4" id="account_info">
@@ -54,7 +69,7 @@
                         {if $uid == 'unknown'}
                             <div class="row" id="account_info_unknown">
                                 <div class="span1">
-                                    <a href="{$images_tourist}" class="thumbnail">
+                                    <a href="#" class="thumbnail">
                                         <img src="images/tourist.png" />
                                     </a>
                                 </div>
@@ -68,7 +83,7 @@
                         {else}
                             <div class="row" id="account_info_known">
                                 <div class="span1">
-                                    <a href="#" class="thumbnail">
+                                    <a href="account.php" class="thumbnail">
                                         <img id="header_username_avatar" src="" alt="">
                                     </a>
                                 </div>
@@ -79,7 +94,7 @@
                                     {else}
                                         <a class="btn btn-success" href="account.php"> 个人信息管理</a>
                                     {/if}
-                                    &nbsp;&nbsp;
+                                    
                                     <a class="btn btn-primary" onclick="logout()"> 安全退出</a>
                                 </div>
                             </div>
