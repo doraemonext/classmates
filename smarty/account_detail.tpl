@@ -43,23 +43,39 @@
                         </div>
                         <dl class="dl-horizontal">
                             <dt>民族</dt>
+                            <dd>{$data.nation}</dd>  
+                        </dl>
+                        <dl class="dl-horizontal">
                             <dt>体重</dt>
-                            <dt>身高</dt>
-                            <dt>学校及专业</dt>
-                            <dt>Email</dt>
-                            <dt>QQ</dt>
-                            <dt>手机1</dt>
-                            <dt>手机2</dt>
-                            <dt>手机3</dt>
-                            <dd>{$data.nation}</dd>
                             <dd>{$data.weight} kg</dd>
-                            <dd>{$data.height} cm</dd>
-                            <dd>{$data.speciality}</dd>
+                        </dl>
+                        <dl class="dl-horizontal">
+                            <dt>身高</dt>
+                            <dd>{$data.height} cm</dd>                           
+                        </dl>
+                        <dl class="dl-horizontal">
+                            <dt>学校及专业</dt>
+                            <dd>{$data.speciality}</dd>  
+                        </dl>
+                        <dl class="dl-horizontal">
+                            <dt>Email</dt>
                             <dd>{$data.email}</dd>
-                            <dd>{$data.qq}</dd>                        
-                            <dd>{$data.phone_1}</dd>
+                        </dl>
+                        <dl class="dl-horizontal">
+                            <dt>QQ</dt>
+                            <dd>{$data.qq}</dd>      
+                        </dl>
+                        <dl class="dl-horizontal">
+                            <dt>手机1</dt>             
+                            <dd>{$data.phone_1}</dd> 
+                        </dl>
+                        <dl class="dl-horizontal">
+                            <dt>手机2</dt>
                             <dd>{$data.phone_2}</dd>
-                            <dd>{$data.phone_3}</dd>    
+                        </dl>
+                        <dl class="dl-horizontal">
+                            <dt>手机3</dt> 
+                            <dd>{$data.phone_3}</dd>                            
                         </dl>
                         <div class="page-header">
                             <h3>兴趣爱好</h3>
