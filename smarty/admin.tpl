@@ -1,41 +1,96 @@
-<div class="container">
-    <ul class="breadcrumb" id="index_breadcrumb">
-        <li><a href="index.php">首页</a> <span class="divider">/</span></li>
-        <li class="active">管理后台</li>
-    </ul>
-    {if $isDisplay == "true"}
-        {if $isAdmin == "false"}
-            <div class="alert alert-error">
-                非常抱歉，您不具有管理员资格。
-            </div>
-        {else}
-        <div class="row">
-            <div class="span3">
-                <div class="sidebar-nav">
-                    <div class="well" style="padding: 8px 0;">
-                        <ul class="nav nav-list">
-                            <h4 style="text-align: center;">管理后台</h4>
-                            <li class="nav-header">全站设置</li>
-                            <li><a href="#" onclick="adminChangeToBasic()"><i class="icon-thumbs-up"></i> 站点设置</a></li>
-                            <li><a href="#" onclick="adminChangeToUser()"><i class="icon-envelope"></i> 用户管理</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>    
-            <div class="span8" id="admin_basic"></div>
-            <div class="span8" id="admin_detail"></div>
-        </div>
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>{$basicInfo.title} 管理后台</title>
+        <link rel="stylesheet" href="templates/css/admin/layout.css" type="text/css" media="screen" />
+        <!--[if lt IE 9]>
+        <link rel="stylesheet" href="templates/css/admin/ie.css" type="text/css" media="screen" />
+        <script src="templates/css/admin/html5.js"></script>
+        <![endif]-->
+        <script src="libs/jquery/jquery.js" type="text/javascript"></script>
+        <script src="templates/js/admin/hideshow.js" type="text/javascript"></script>
+        <script src="libs/jquery/jquery.tablesorter.min.js" type="text/javascript"></script>
+        <script src="libs/jquery/jquery.equalHeight.js" type="text/javascript"></script>
         <script type="text/javascript">
-            $(function() { adminChangeToBasic(); });
+            $(document).ready(function() { 
+                $(".tablesorter").tablesorter(); 
+            });
+            $(document).ready(function() {
+                //When page loads...
+                $(".tab_content").hide(); //Hide all content
+                $("ul.tabs li:first").addClass("active").show(); //Activate first tab
+                $(".tab_content:first").show(); //Show first tab content
+                //On Click Event
+                $("ul.tabs li").click(function() {
+                    $("ul.tabs li").removeClass("active"); //Remove any "active" class
+                    $(this).addClass("active"); //Add "active" class to selected tab
+                    $(".tab_content").hide(); //Hide all tab content
+                    var activeTab = $(this).find("a").attr("href"); //Find the href attribute value to identify the active tab + content
+                    $(activeTab).fadeIn(); //Fade in the active ID content
+                    return false;
+                });
+            });
         </script>
-        {/if}
-    {else}
-        <div class="row">
-            <div class="span12">
-                <div class="alert alert-error">
-                    <i class="icon-exclamation-sign"></i> 您还没有登录，请登陆后再访问此页面。
-                </div> 
+        <script type="text/javascript">
+            $(function() {
+                $('.column').equalHeight();
+            });
+        </script>
+        <script type="text/javascript" src="libs/messenger/build/js/underscore-min.js"></script>
+        <script type="text/javascript" src="libs/messenger/build/js/backbone-min.js"></script>
+        <script type="text/javascript" src="libs/messenger/build/js/messenger.min.js"></script>
+        <script type="text/javascript" src="libs/jquery/jquery.json.js"></script>        
+        <script type="text/javascript" src="templates/js/tools/popup.js"></script>
+        <script type="text/javascript" src="templates/js/tools/encrypt.js"></script>
+        <script type="text/javascript" src="templates/js/classmates.js"></script>
+        <script type="text/javascript" src="templates/js/admin/admin.js"></script>
+    </head>
+    
+    <body>
+        <header id="header">
+            <hgroup>
+                <h1 class="site_title"><a href="admin.php">{$basicInfo.title}</a></h1>
+                <h2 class="section_title">{$actionName}</h2><div class="btn_view_site"><a href="index.php">返回前台首页</a></div>
+            </hgroup>
+        </header> <!-- end of header bar -->
+        
+        <section id="secondary_bar">
+            <div class="user">
+                <p>管理员：{$username}</p>
             </div>
-        </div>
-    {/if}
-</div>
+            <div class="breadcrumbs_container">
+                <article class="breadcrumbs"><a href="index.html">管理后台</a> <div class="breadcrumb_divider"></div> <a class="current">{$actionName}</a></article>
+            </div>
+        </section><!-- end of secondary bar -->
+        
+        <aside id="sidebar" class="column">
+            <h3>站点管理</h3>
+            <ul class="toggle">
+                <li class="icn_tags"><a href="admin.php?action=index">仪表盘</a></li>
+                <li class="icn_settings"><a href="admin.php?action=setting">全局设置</a></li>
+                <li class="icn_video"><a href="admin.php?action=picture">图片轮播</a></li>
+                <li class="icn_folder"><a href="admin.php?action=motto">座右铭设置</a></li>                
+            </ul>
+            <h3>用户管理</h3>
+            <ul class="toggle">
+                <li class="icn_security"><a href="admin.php?action=unverify_user">待验证用户</a></li>
+                <li class="icn_add_user"><a href="admin.php?action=add_user">添加用户</a></li>
+                <li class="icn_view_users"><a href="admin.php?action=manage_user">管理用户</a></li>
+            </ul>
+        </aside><!-- end of sidebar -->
+
+        {if $action == "index"}
+            {include file="admin/admin_index.tpl" indexCountTotal=$indexCountTotal indexCountBanned=$indexCountBanned 
+                                                   indexCountUnverify=$indexCountUnverify indexCountNormal=$indexCountNormal 
+                                                   indexCountAdmin=$indexCountAdmin}
+        {elseif $action == "setting"}
+            {include file="admin/admin_setting.tpl" settingTitle=$settingTitle settingSubtitle=$settingSubtitle 
+                                                     settingIndexWriting=$settingIndexWriting status=$status}
+        {elseif $action == "picture"}
+            {include file="admin/admin_picture.tpl" pictureData=$pictureData}
+        {elseif $action == "motto"}
+            {include file="admin/admin_motto.tpl" mottoData=$mottoData}
+        {/if}
+    </body>
+</html>

@@ -51,7 +51,7 @@ try {
     $result = $db->query($query);
     
     if ($result->num_rows == 0) {
-        $query = 'INSERT INTO classmates(name, password) VALUES ( "'.$username.'", "'.$password.'")';
+        $query = 'INSERT INTO classmates(name, password, privilege) VALUES ( "'.$username.'", "'.$password.'", '.MEMBER_UNVERIFY.')';
         $db->query($query);
         $query = 'SELECT `id` FROM `classmates` WHERE `name` = "'.$username.'"';
         $result = $db->query($query);

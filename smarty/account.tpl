@@ -1,3 +1,4 @@
+{include file="header.tpl" basicInfo=$basicInfo userPrivilege=$userPrivilege}
 <link rel="stylesheet" type="text/css" href="libs/datetimepicker/datetimepicker.css">
 <script type="text/javascript" src="libs/datetimepicker/bootstrap-datetimepicker.min.js"></script>
 <script type="text/javascript" src="libs/datetimepicker/bootstrap-datetimepicker.zh-CN.js"></script>
@@ -7,7 +8,7 @@
         <li><a href="index.php">首页</a> <span class="divider">/</span></li>
         <li class="active">个人信息管理</li>
     </ul>
-    {if $isDisplay == "true"}
+    {if $isDisplay}
         <div class="row">
             <div class="span3">
                 <div class="sidebar-nav">
@@ -27,14 +28,23 @@
                     </div>
                 </div>
             </div>    
-            <div class="span8" id="account_content_basic"></div>
-            <div class="span8" id="account_content_detail"></div>
-            <div class="span8" id="account_content_hobby"></div>
-            <div class="span8" id="account_content_avatar_all">
-                <div id="account_content_avatar"></div>
-                <div id="account_content_avatar_upload"></div>
+            <div class="container">
+                {if $errorInfo|count_characters != 0}
+                    <div class="span8">
+                        <div class="alert alert-error">
+                            {$errorInfo}
+                        </div> 
+                    </div>
+                {/if}
+                <div class="span8" id="account_content_basic"></div>
+                <div class="span8" id="account_content_detail"></div>
+                <div class="span8" id="account_content_hobby"></div>
+                <div class="span8" id="account_content_avatar_all">
+                    <div id="account_content_avatar"></div>
+                    <div id="account_content_avatar_upload"></div>
+                </div>
+                <div class="span8" id="account_password"></div>
             </div>
-            <div class="span8" id="account_password"></div>
         </div>
         <script type="text/javascript">
             $(function() { accountChangeToBasic(); });
@@ -43,9 +53,10 @@
         <div class="row">
             <div class="span12">
                 <div class="alert alert-error">
-                    <i class="icon-exclamation-sign"></i> 您还没有登录，请登陆后再访问此页面。
+                    {$errorInfo}
                 </div> 
             </div>
         </div>
     {/if}
 </div>
+{include file="footer.tpl" basicInfo=$basicInfo}    

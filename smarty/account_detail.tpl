@@ -1,8 +1,9 @@
+{include file="header.tpl" basicInfo=$basicInfo userPrivilege=$userPrivilege}
 <div class="container">
     <ul class="breadcrumb" id="index_breadcrumb">
         <li><a href="index.php">首页</a> <span class="divider">/</span></li>
         <li><a href="classmates.php">同学录</a> <span class="divider">/</span></li>
-        {if $isDisplay == "true"}
+        {if $isDisplay}
             <li class="active">{$data.name}</li>
         {else}
             <li class="active">无法提供信息</li>
@@ -10,7 +11,7 @@
     </ul>
     
     <div id="account_detail_background">
-        {if $isDisplay == "true"}
+        {if $isDisplay}
             <div id="account_detail_info">
                 <div class="row">
                     <div class="span2 offset1">
@@ -113,8 +114,9 @@
             </div>
         {else}
             <div class="alert alert-error">
-                非常抱歉，无法显示您所需要的信息，请确保您已经 <strong><a href="#" onclick="$('#loginModal').modal('show')">登录</a></strong> ，如果问题依旧，请尝试重新登录并正确通过链接打开本页面。
+                {$errorInfo}
             </div>
         {/if}
     </div>
 </div>
+{include file="footer.tpl" basicInfo=$basicInfo}

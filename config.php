@@ -23,4 +23,10 @@ $_config['disp']['perpage_limit'] = 18;
 define('MYSQL_ERROR', 1);
 define('GET_OPTIONS_ERROR', 2);
 
+define('MEMBER_TOURIST', 0);
+define('MEMBER_BANNED', 1);
+define('MEMBER_UNVERIFY', 2);
+define('MEMBER_NORMAL', 4);
+define('MEMBER_ADMIN', 8);
+
 ?>

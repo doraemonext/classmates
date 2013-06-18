@@ -22,44 +22,41 @@ function getNewSmarty()
     return $ui;
 }
 
-/*
- * 显示头部 HTML 内容
- */
-function showHeader($title, $subtitle, $pageLocated, $uid)
-{
+function getOption($_options, $name) {
+    while ($row = $_options->fetch_object()) {
+        if ($row->options_name == $name) {
+            return $row->options_value;
+        }
+    }
+    throw new Exception("程序取得了一个无效选项", GET_OPTIONS_ERROR);
+}
+
+function getPageBasicInfo() {
     global $_config;
+    $info = array();
     
-    $ui = getNewSmarty();
-    $navigationPage = array(
+    try {
+        $db = mysqlConnect($_config['db']['host'], $_config['db']['username'],
+                           $_config['db']['password'], $_config['db']['dbname']);
+        $query = 'SET NAMES UTF8';
+        $db->query($query);
+        $query = 'SELECT * FROM `options`';
+        $options = $db->query($query);
+        
+        while ($rows = $options->fetch_object()) {
+            $info[$rows->options_name] = $rows->options_value;
+        }
+    } catch (Exception $e) {
+        echoException($e);
+    }
+    
+    $info['navigationPage'] = array(
         $_config['page']['classmates'] => 'classmates',
         $_config['page']['show_picture'] => 'show_picture',
         $_config['page']['show_video'] => 'show_video'
     );
     
-    $ui->assign('title', $title);
-    $ui->assign('subtitle', $subtitle);
-    $ui->assign('navigationPage', $navigationPage);
-    $ui->assign('uid', $uid);
-    if (isset($_SESSION['admin'])) {
-        $ui->assign('admin', 'true');
-    } else {
-        $ui->assign('admin', 'false');
-    }
-    $ui->assign('pageLocated', $pageLocated);
-    
-    $ui->display('header.tpl');
-}
-
-/*
- * 显示底部 HTML 内容
- */
-function showFooter($title)
-{
-    $ui = getNewSmarty();
-    
-    $ui->assign('title', $title);
-    
-    $ui->display('footer.tpl');
+    return $info;
 }
 
 /*
@@ -73,15 +70,6 @@ function mysqlConnect($host, $username, $password, $dbname)
         exit;
     }
     return $db;
-}
-
-function getOption($_options, $name) {
-    while ($row = $_options->fetch_object()) {
-        if ($row->options_name == $name) {
-            return $row->options_value;
-        }
-    }
-    throw new Exception("程序取得了一个无效选项", GET_OPTIONS_ERROR);
 }
 
 /*
@@ -200,6 +188,9 @@ function escape($string, $in_encoding = 'UTF-8',$out_encoding = 'UCS-2') {
     return $return; 
 } 
 
+/*
+ * 检查是否是正确的日期
+ */
 function isDate($str, $format='Y-m-d'){
 	$unixTime_1 = strtotime($str);
 	if (!is_numeric($unixTime_1)) 
@@ -213,12 +204,23 @@ function isDate($str, $format='Y-m-d'){
 	}
 }
 
+/*
+ * 检查是否是正确的Email地址
+ */
 function isEmail($email){
-	if (preg_match("/^[0-9a-zA-Z]+@(([0-9a-zA-Z]+)[.])+[a-z]{2,4}$/i", $email)) {
+	if (preg_match("/^[0-9a-zA-Z\_]+@(([0-9a-zA-Z]+)[.])+[a-z]{2,4}$/i", $email)) {
     	return true;
     } else {
         return false;
 	}
+}
+
+/*
+ * 获取文件扩展名
+ */
+function getExtension($file)
+{
+    return pathinfo($file, PATHINFO_EXTENSION);
 }
 
 ?>

@@ -1,8 +1,3 @@
-// 使得 $.getScript 获取脚本时可以进行缓存
-$.ajaxSetup({
-    cache: true
-});
-
 $(function() {
     navigationMotto();
     displayAccountInfo();

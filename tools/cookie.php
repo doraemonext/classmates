@@ -22,21 +22,31 @@ if (isset($_SESSION['userCookie'])) {
     }
 }
 
+$_SESSION['userPrivilege'] = MEMBER_TOURIST;
 if (isset($_SESSION['userCookie'])) {
-    $_SESSION['userId'] = $userCookie["user_id"];
+    $_SESSION['userId'] = $userCookie['user_id'];
     try {
         $db = mysqlConnect($_config['db']['host'], $_config['db']['username'],
                            $_config['db']['password'], $_config['db']['dbname']);
         $query = 'SET NAMES UTF8';
         $db->query($query);
-        $query = 'SELECT `admin` FROM `classmates` WHERE `id` = '.$_SESSION['userId'];
+        $query = 'SELECT `privilege`, `banned_reason` FROM `classmates` WHERE `id` = '.$_SESSION['userId'];
         $result = $db->query($query);
         $rows = $result->fetch_object();
+        $privilege = $rows->privilege;
         
-        if ($rows->admin == 1) {
-            $_SESSION['admin'] = 1;
-        } else {
-            unset($_SESSION['admin']);
+        if ($privilege & MEMBER_BANNED) {
+            $_SESSION['userPrivilege'] = MEMBER_BANNED;
+            $_SESSION['bannedReason'] = $rows->banned_reason;
+        }
+        if ($privilege & MEMBER_UNVERIFY) {
+            $_SESSION['userPrivilege'] = MEMBER_UNVERIFY;
+        }
+        if ($privilege & MEMBER_NORMAL) {
+            $_SESSION['userPrivilege'] = MEMBER_NORMAL;
+        }
+        if ($privilege & MEMBER_ADMIN) {
+            $_SESSION['userPrivilege'] = MEMBER_ADMIN;
         }
     } catch (Exception $e) {
         echoException($e);

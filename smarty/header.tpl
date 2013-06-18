@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <title>{$title}</title>
+        <title>{$basicInfo.title}</title>
         <link rel="stylesheet" type="text/css" href="templates/css/style.css">
         <script type="text/javascript" src="libs/jquery/jquery.js"></script>    
         <script type="text/javascript" src="libs/bootstrap/js/bootstrap.min.js"></script>
@@ -14,7 +14,6 @@
         <script type="text/javascript" src="templates/js/tools/scroll_content.js"></script>
         <script type="text/javascript" src="templates/js/tools/validation.js"></script>
         <script type="text/javascript" src="templates/js/tools/popup.js"></script>
-        <script type="text/javascript" src="templates/js/tools/get_html_value.js"></script>
         <script type="text/javascript" src="templates/js/tools/encrypt.js"></script>
         <script type="text/javascript" src="templates/js/classmates.js"></script>
     
@@ -29,17 +28,17 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="./index.php">{$title}</a>
+                    <a class="brand" href="./index.php">{$basicInfo.title}</a>
                     <div class="nav-collapse collapse" id="main-menu">
                         <ul class="nav pull-left" id="main-menu-left">
-                            {foreach from=$navigationPage key=name item=address}
+                            {foreach from=$basicInfo.navigationPage key=name item=address}
                                 {if $pageLocated == $address}
                                     <li class="active"><a href="{$address}.php"><strong>{$name}</strong></a></li>
                                 {else}
                                     <li><a href="{$address}.php"><strong>{$name}</strong></a></li>
                                 {/if}
                             {/foreach}
-                            {if $admin == 'true'}
+                            {if $userPrivilege >= 8}
                                 <li><a href="admin.php"><strong>管理后台</strong></a></li>
                             {/if}
                         </ul>
@@ -61,12 +60,12 @@
             <header class="jumbotron subhead" id="overview">
                 <div class="row">
                     <div class="span7">
-                        <h1><a style="text-decoration: none" href="index.php">{$title}</a></h1>
-                        <p class="lead">{$subtitle}</p>
+                        <h1><a style="text-decoration: none" href="index.php">{$basicInfo.title}</a></h1>
+                        <p class="lead">{$basicInfo.subtitle}</p>
                     </div>
                     <div class="span4" id="account_info">
                         <br />
-                        {if $uid == 'unknown'}
+                        {if $userPrivilege == 0}
                             <div class="row" id="account_info_unknown">
                                 <div class="span1">
                                     <a href="#" class="thumbnail">

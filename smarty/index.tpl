@@ -1,3 +1,4 @@
+{include file="header.tpl" basicInfo=$basicInfo userPrivilege=$userPrivilege}
 <div class="container">
     <ul class="breadcrumb" id="index_breadcrumb">
         <li class="active">首页</li>
@@ -24,4 +25,4 @@
         </div>
     </div>
 </div>
-    
+{include file="footer.tpl" basicInfo=$basicInfo}

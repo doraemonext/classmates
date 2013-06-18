@@ -15,30 +15,46 @@ require dirname(__FILE__).'/tools/cookie.php';
 
 $pageLocated = 'account_detail';
 
+$isDisplay = $errorInfo = '';
+switch ($_SESSION['userPrivilege']) {
+    case MEMBER_TOURIST:
+        $isDisplay = false;
+        $errorInfo = '您尚未登陆，请登陆后重试。';
+        break;
+    case MEMBER_BANNED:
+        $isDisplay = false;
+        $errorInfo = '您的帐号已被管理员禁止，无法查看本页面。<br /><br />';
+        $errorInfo .= '下面是管理员禁止您帐号的原因：<br /><br />';
+        $errorInfo .= '<strong>'.$_SESSION['bannedReason'].'</strong><br /><br />';
+        $errorInfo .= '如果您对此原因有任何异议，请联系管理员处理。';
+        break;
+    case MEMBER_UNVERIFY:
+        $isDisplay = false;
+        $errorInfo = '您尚未通过验证，请耐心等待管理员审核您的信息。<br />在审核通过之前，您只能修改自己的资料，而不能查看其他人的信息。';
+        break;
+    case MEMBER_NORMAL:
+        $isDisplay = true;
+        $errorInfo = '';
+        break;
+    case MEMBER_ADMIN:
+        $isDisplay = true;
+        $errorInfo = '';
+        break;
+    default:
+        $isDisplay = false;
+        $errorInfo = '发生未知错误，请联系管理员处理';
+        break;
+}
+
 @ $id = $_GET['id'];
-
-$isDisplay = "true";
-if (!isset($_SESSION['userCookie'])) {
-    $isDisplay = "false";
-}
-if (empty($id)) {
-    $isDisplay = "false";
-}
-if (!is_numeric($id)) {
-    $isDisplay = "false";
-}
-
-// 取得标题和副标题信息
-try {
-    $title = getOption($_options, 'title');
-    $subtitle = getOption($_options, 'subtitle');
-} catch (Exception $e) {
-    echoException($e);
+if (empty($id) || !is_numeric($id)) {
+    $isDisplay = false;
+    $errorInfo = '您提供的编号非法，请确认您是否从正确的页面点击进入。';
 }
 
 $data = array();
 
-if ($isDisplay == "true") {
+if ($isDisplay) {
     try {
         $db = mysqlConnect($_config['db']['host'], $_config['db']['username'],
                            $_config['db']['password'], $_config['db']['dbname']);
@@ -47,14 +63,15 @@ if ($isDisplay == "true") {
         $query = 'SELECT * FROM `classmates` WHERE `id` = '.$id;
         $result = $db->query($query);
         if ($result->num_rows == 0) {
-            $isDisplay = "false";
+            $isDisplay = false;
+            $errorInfo = '您提供的编号非法，请确认您是否从正确的页面点击进入。';
         }
     } catch (Exception $e) {
         echoException($e);
     }
 }
-
-if ($isDisplay == "true") {    
+ 
+if ($isDisplay) {
     $rows = $result->fetch_object();
     $data['name'] = $rows->name;
     $data['avatar'] = getAvatarPath($rows->id);
@@ -107,22 +124,15 @@ if ($isDisplay == "true") {
     $data['hobby_others'] = nl2br(str_replace(' ','&nbsp;', $rows->hobby_others));
 }
 
-// 显示头部
-if (isset($_SESSION['userCookie'])) {
-    showHeader($title, $subtitle, $pageLocated, 'known');
-} else {
-    showHeader($title, $subtitle, $pageLocated, 'unknown');
-}
-
 $ui = getNewSmarty();
-$ui->assign('title', $title);
-$ui->assign('subtitle', $subtitle);
+$ui->assign('basicInfo', getPageBasicInfo());
+$ui->assign('userPrivilege', $_SESSION['userPrivilege']);
 $ui->assign('pageLocated', $pageLocated);
-$ui->assign('isDisplay', $isDisplay);
-$ui->assign('data', $data);
-$ui->display('account_detail.tpl');
 
-// 显示底部
-showFooter($title);
+$ui->assign('isDisplay', $isDisplay);
+$ui->assign('errorInfo', $errorInfo);
+$ui->assign('data', $data);
+
+$ui->display('account_detail.tpl');
 
 ?>

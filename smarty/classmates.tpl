@@ -1,3 +1,4 @@
+{include file="header.tpl" basicInfo=$basicInfo userPrivilege=$userPrivilege}
 <div class="container">
     <ul class="breadcrumb" id="index_breadcrumb">
         <li><a href="index.php">首页</a> <span class="divider">/</span></li>
@@ -12,11 +13,11 @@
             <div class="alert alert-error" id="page_across_border" style="display: none;">
                 
             </div>
-            {if $isDisplay == "false"} 
+            {if not $isDisplay} 
                 <div class="row">
                     <div class="span12">
                          <div class="alert alert-error">
-                             非常抱歉，无法显示您所需要的信息，请确保您已经 <strong><a href="#" onclick="$('#loginModal').modal('show')">登录</a></strong> ，如果问题依旧，请尝试重新登录并正确通过链接打开本页面。
+                             {$errorInfo}
                          </div> 
                     </div>
                 </div>
@@ -59,5 +60,4 @@
         </div>
     </div>
 </div>
-    
-
+{include file="footer.tpl" basicInfo=$basicInfo}    
