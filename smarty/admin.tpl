@@ -62,7 +62,7 @@
                 <p>管理员：{$username}</p>
             </div>
             <div class="breadcrumbs_container">
-                <article class="breadcrumbs"><a href="index.html">管理后台</a> <div class="breadcrumb_divider"></div> <a class="current">{$actionName}</a></article>
+                <article class="breadcrumbs"><a href="admin.php">管理后台</a> <div class="breadcrumb_divider"></div> <a class="current">{$actionName}</a></article>
             </div>
         </section><!-- end of secondary bar -->
         
