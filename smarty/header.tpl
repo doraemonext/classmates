@@ -9,7 +9,6 @@
         <script type="text/javascript" src="libs/messenger/build/js/underscore-min.js"></script>
         <script type="text/javascript" src="libs/messenger/build/js/backbone-min.js"></script>
         <script type="text/javascript" src="libs/messenger/build/js/messenger.min.js"></script>
-        <script type="text/javascript" src="libs/jquery/jquery.leanModal.min.js"></script>
         <script type="text/javascript" src="libs/jquery/jquery.json.js"></script>        
         <script type="text/javascript" src="templates/js/tools/scroll_content.js"></script>
         <script type="text/javascript" src="templates/js/tools/validation.js"></script>

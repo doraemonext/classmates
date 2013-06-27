@@ -4,11 +4,13 @@
         <meta charset="utf-8"/>
         <title>{$basicInfo.title} 管理后台</title>
         <link rel="stylesheet" href="templates/css/admin/layout.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="libs/jquery-ui/css/jquery-ui-1.8.18.custom.css" type="text/css" media="screen" />
         <!--[if lt IE 9]>
         <link rel="stylesheet" href="templates/css/admin/ie.css" type="text/css" media="screen" />
         <script src="templates/css/admin/html5.js"></script>
         <![endif]-->
-        <script src="libs/jquery/jquery.js" type="text/javascript"></script>
+        <script src="libs/jquery-ui/jquery-1.7.1.min.js" type="text/javascript"></script>
+        <script src="libs/jquery-ui/jquery-ui-1.8.18.custom.min.js" type="text/javascript"></script>
         <script src="templates/js/admin/hideshow.js" type="text/javascript"></script>
         <script src="libs/jquery/jquery.tablesorter.min.js" type="text/javascript"></script>
         <script src="libs/jquery/jquery.equalHeight.js" type="text/javascript"></script>
@@ -74,9 +76,11 @@
             </ul>
             <h3>用户管理</h3>
             <ul class="toggle">
-                <li class="icn_security"><a href="admin.php?action=unverify_user">待验证用户</a></li>
-                <li class="icn_add_user"><a href="admin.php?action=add_user">添加用户</a></li>
-                <li class="icn_view_users"><a href="admin.php?action=manage_user">管理用户</a></li>
+                {if $unverify > 0}
+                    <li class="icn_security"><a href="admin.php?action=user_admin">用户管理</a> <strong><font color="red">({$unverify}人待验证)</font></strong></li>
+                {else}
+                    <li class="icn_security"><a href="admin.php?action=user_admin">用户管理</a></li>
+                {/if}
             </ul>
         </aside><!-- end of sidebar -->
 
@@ -91,6 +95,8 @@
             {include file="admin/admin_picture.tpl" pictureData=$pictureData}
         {elseif $action == "motto"}
             {include file="admin/admin_motto.tpl" mottoData=$mottoData}
+        {elseif $action == "user_admin"}
+            {include file="admin/admin_user_admin.tpl" userData=$userData}
         {/if}
     </body>
 </html>

@@ -177,24 +177,54 @@ switch ($action) {
         }         
         
         break;
-    case 'unverify_user':
-        $actionName = '待验证用户';
-        break;
-    case 'add_user':
-        $actionName = '添加用户';
-        break;
-    case 'manage_user':
-        $actionName = '管理用户';
+    case 'user_admin':
+        $actionName = '用户管理';
+
+        try {
+            $db = mysqlConnect($_config['db']['host'], $_config['db']['username'],
+                               $_config['db']['password'], $_config['db']['dbname']);
+            $query = 'SET NAMES UTF8';
+            $db->query($query);
+            $query = 'SELECT `id`, `name`, `privilege` FROM `classmates`';
+            $result = $db->query($query);
+            
+            $userData = array();
+            while ($rows = $result->fetch_object()) {
+                $userData[$rows->id] = array($rows->id, $rows->name, $rows->privilege);
+            }
+        } catch (Exception $e) {
+            echoException($e);
+        }   
+
         break;
     default:
         $isDisplay = false;
         $errorInfo = '您提供的参数非法，请通过正确途径进入此页面。';
 }
 
+$unverify = 0;
+try {
+    $db = mysqlConnect($_config['db']['host'], $_config['db']['username'],
+                       $_config['db']['password'], $_config['db']['dbname']);
+    $query = 'SET NAMES UTF8';
+    $db->query($query);
+    $query = 'SELECT `privilege` FROM `classmates`';
+    $result = $db->query($query);
+
+    while ($rows = $result->fetch_object()) {
+        if ($rows->privilege == 2) {
+            $unverify++;
+        }
+    }
+} catch (Exception $e) {
+    echoException($e);
+}         
+
 $ui = getNewSmarty();
 $ui->assign('basicInfo', getPageBasicInfo());
 $ui->assign('userPrivilege', $_SESSION['userPrivilege']);
 $ui->assign('pageLocated', $pageLocated);
+$ui->assign('unverify', $unverify);
 $ui->assign('isDisplay', $isDisplay);
 $ui->assign('errorInfo', $errorInfo);
 if ($isDisplay) {
@@ -222,6 +252,9 @@ if ($isDisplay) {
             break;
         case 'motto':
             $ui->assign('mottoData', $mottoData);
+            break;
+        case 'user_admin':
+            $ui->assign('userData', $userData);
             break;
         default:
             break;

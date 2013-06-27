@@ -82,7 +82,6 @@ if ($isDisplay) {
     } else {
         $data['sex'] = '女';
     }
-    $data['hobby'] = $rows->hobby;
     $data['nation'] = $rows->nation;
     $data['weight'] = $rows->weight;
     $data['height'] = $rows->height;

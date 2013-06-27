@@ -104,6 +104,7 @@ if (is_uploaded_file($_FILES['pictureNew']['tmp_name'])) {
     echo json_encode($returnValue);
     exit();   
 }
+createThumbnail($upfile, 460, 344);
 
 $finalFilename = 'images/index_picture/'.$filename.'.'.getExtension($_FILES['pictureNew']['name']);
 try {

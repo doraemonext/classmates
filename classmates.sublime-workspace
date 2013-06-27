@@ -1,0 +1,289 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"jqu",
+				"jQuery.ajax	jQuery.ajax"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "smarty/admin/admin_picture.tpl",
+			"settings":
+			{
+				"buffer_size": 2114,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "response/admin/picture_new.php",
+			"settings":
+			{
+				"buffer_size": 3930,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/js/admin/admin.js",
+			"settings":
+			{
+				"buffer_size": 3883,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 47.0,
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"jquery",
+				"Set Syntax: jQuery (JavaScript)"
+			],
+			[
+				"for",
+				"Format: Javascript"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 467.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Library/WebServer/Documents/classmates/smarty/admin.tpl",
+		"/Library/WebServer/Documents/classmates/login.php",
+		"/Library/WebServer/Documents/classmates/libs/ajaxupload/ajaxfileupload.js",
+		"/Library/WebServer/Documents/classmates/smarty/modal.tpl",
+		"/Library/WebServer/Documents/classmates/config.php",
+		"/Library/WebServer/Documents/classmates/smarty/header.tpl",
+		"/Volumes/Personal/Project/PHP/classmates/libs/ajaxupload/ajaxfileupload.js",
+		"/Volumes/Personal/Project/PHP/classmates/libs/ajaxupload/ajaxfileupload.php",
+		"/Users/doraemonext/Library/Application Support/Sublime Text 2/Packages/JsFormat/JsFormat.sublime-settings",
+		"/Users/doraemonext/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/Users/doraemonext/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/doraemonext/Library/Application Support/Sublime Text 2/Packages/User/Distraction Free.sublime-settings",
+		"/Users/doraemonext/Library/Application Support/Sublime Text 2/Packages/User/JavaScript.sublime-settings",
+		"/Users/doraemonext/Library/Application Support/Sublime Text 2/Packages/JsFormat/Default (OSX).sublime-keymap",
+		"/Users/doraemonext/Library/Application Support/Sublime Text 2/Packages/User/JsFormat.sublime-settings",
+		"/Volumes/Personal/Project/PHP/classmates/response/admin/picture_new.php",
+		"/Volumes/Personal/Project/PHP/classmates/smarty/admin/admin_picture.tpl",
+		"/Volumes/Personal/Project/PHP/classmates/account_detail.php",
+		"/Volumes/Personal/Project/PHP/classmates/smarty/admin.tpl",
+		"/Volumes/Personal/Project/PHP/classmates/register.php",
+		"/Volumes/Personal/Project/PHP/classmates/tools/cookie.php",
+		"/Applications/NetBeans/NetBeans 7.3.1.app/Contents/Resources/NetBeans/etc/netbeans.conf",
+		"/Applications/XAMPP/xamppfiles/phpmyadmin/config.inc.php",
+		"/Volumes/Personal/Project/PHP/classmates/account.php",
+		"/Users/doraemonext/Library/Application Support/Sublime Text 2/Packages/CTags/CTags.sublime-settings",
+		"/Volumes/Personal/Project/PHP/classmates/libs/messenger/spec/lib/jquery-1.9.1.js",
+		"/Volumes/Personal/Project/PHP/classmates/libs/smarty/sysplugins/smarty_internal_data.php",
+		"/Volumes/Personal/Project/PHP/classmates/functions.php"
+	],
+	"find":
+	{
+		"height": 0.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "smarty/admin/admin_picture.tpl",
+					"settings":
+					{
+						"buffer_size": 2114,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1681,
+								1681
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 260.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "response/admin/picture_new.php",
+					"settings":
+					{
+						"buffer_size": 3930,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								176,
+								176
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 225.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "templates/js/admin/admin.js",
+					"settings":
+					{
+						"buffer_size": 3883,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2873,
+								2873
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/jQuery/Syntaxes/jQueryJavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1080.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 202.0,
+	"status_bar_visible": true
+}

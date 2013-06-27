@@ -1,6 +1,7 @@
 <?php
 require_once "libs/smarty/Smarty.class.php";
 
+date_default_timezone_set("PRC");
 session_start();
 
 /** 数据库设置 **/

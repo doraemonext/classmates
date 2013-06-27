@@ -1,7 +1,9 @@
-<script type="text/javascript" src="libs/ajaxupload/ajaxfileupload.js"></script>
 <section id="main" class="column">
     <article class="module width_full">
         <header><h3>图片轮播</h3></header>
+        <div class="row">
+            
+        </div>
         <table class="tablesorter" cellspacing="0"> 
             <thead> 
                 <tr> 
@@ -35,21 +37,20 @@
             </div>
         </footer>
     </article>
-    <article class="module width_full" id="pictureNewForm" style="display: none">
-        <header><h3>添加图片</h3></header>
-        <div class="module_content">
-            <form action="response/admin/picture_new.php" method="post" enctype="multipart/form-data">
-                <label for="pictureNew">请选择图片：</label>
-                <input type="file" name="pictureNew" id="pictureNew" /> （最大文件大小：4M， 允许的文件类型：jpg, jpeg, png, gif）
-                <br /><br />
-                说明：所有上传图片的文件名都会被系统重新编码，并非上传失败。
-            </form>
-        </div>
-        <footer>
-            <div class="button_link">
-                <input type="button" value="上传" onclick="pictureNewUpload()" class="alt_btn" />
-                <input type="button" value="取消" onclick="pictureNewUndisplay()" />      
-            </div>
-        </footer>
-    </article>
 </section>
+    
+<script>
+     $(function() {
+         $("#upload_picture").hide();
+     });
+</script>            
+<div id="upload_picture" title="上传图片">
+    <form action="#" method="post" enctype="multipart/form-data">
+        <label for="pictureNew">请选择图片：</label>
+        <input type="file" name="pictureNew" id="pictureNew" /> 
+        <br /><br />
+        最大文件大小：4M， 允许的文件类型：jpg, jpeg, png, gif
+        <br /><br />
+        说明：所有上传图片的文件名都会被系统重新编码，并非上传失败。
+    </form>
+</div>
