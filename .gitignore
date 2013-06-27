@@ -1,3 +1,4 @@
-nbproject/
 *~
-smarty_compile/
+smarty_compile/*
+classmates.sublime-project
+classmates.sublime-workspace
