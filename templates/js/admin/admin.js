@@ -72,6 +72,7 @@ function pictureNewDisplay() {
    $("#upload_picture").dialog({
        buttons: {
            "上传": function() {
+               $("#upload_picture_progress").css("display", "block");
                pictureNewUpload();
            },
            "取消": function() {

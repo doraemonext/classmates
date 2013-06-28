@@ -52,5 +52,7 @@
         最大文件大小：4M， 允许的文件类型：jpg, jpeg, png, gif
         <br /><br />
         说明：所有上传图片的文件名都会被系统重新编码，并非上传失败。
+        <br /><br />
+        <div id="upload_picture_progress" style="display:none">正在上传中……</div>
     </form>
 </div>

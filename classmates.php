@@ -30,7 +30,7 @@ switch ($_SESSION['userPrivilege']) {
         break;
     case MEMBER_UNVERIFY:
         $isDisplay = false;
-        $errorInfo = '您尚未通过验证，请耐心等待管理员审核您的信息';
+        $errorInfo = '您尚未通过验证，请耐心等待管理员审核您的信息。<br />在审核通过之前，您只能修改自己的资料，而不能查看其他人的信息。';
         break;
     case MEMBER_NORMAL:
         $isDisplay = true;

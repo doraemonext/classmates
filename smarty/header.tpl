@@ -37,9 +37,7 @@
                                     <li><a href="{$address}.php"><strong>{$name}</strong></a></li>
                                 {/if}
                             {/foreach}
-                            {if $userPrivilege >= 8}
-                                <li><a href="admin.php"><strong>管理后台</strong></a></li>
-                            {/if}
+                            <li><a href="admin.php"><strong>管理后台</strong></a></li>
                         </ul>
                         <div class="nav pull-right" id="main-menu-right">
                             <div class="scrollDiv" id="navigation_motto">

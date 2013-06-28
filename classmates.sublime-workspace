@@ -11,30 +11,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "smarty/admin/admin_picture.tpl",
-			"settings":
-			{
-				"buffer_size": 2114,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "response/admin/picture_new.php",
-			"settings":
-			{
-				"buffer_size": 3930,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "templates/js/admin/admin.js",
-			"settings":
-			{
-				"buffer_size": 3883,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -76,12 +52,31 @@
 	},
 	"file_history":
 	[
+		"/Library/WebServer/Documents/classmates/smarty/header.tpl",
+		"/Library/WebServer/Documents/classmates/classmates.php",
+		"/Library/WebServer/Documents/classmates/account.php",
+		"/Library/WebServer/Documents/classmates/show_picture.php",
+		"/Library/WebServer/Documents/classmates/smarty/show_video.tpl",
+		"/Library/WebServer/Documents/classmates/show_video.php",
+		"/Library/WebServer/Documents/classmates/tools/verify.php",
+		"/Library/WebServer/Documents/classmates/config.php",
+		"/Library/WebServer/Documents/classmates/smarty/classmates.tpl",
+		"/Library/WebServer/Documents/classmates/smarty/show_picture.tpl",
+		"/Library/WebServer/Documents/classmates/smarty/admin/admin_picture.tpl",
+		"/Library/WebServer/Documents/classmates/templates/js/admin/admin.js",
+		"/Library/WebServer/Documents/classmates/smarty/index.tpl",
+		"/Library/WebServer/Documents/classmates/index.php",
+		"/Library/WebServer/Documents/classmates/response/submit_account_basic.php",
+		"/Library/WebServer/Documents/classmates/response/submit_account_detail.php",
+		"/Library/WebServer/Documents/classmates/templates/js/classmates.js",
+		"/Library/WebServer/Documents/classmates/test.php",
+		"/Library/WebServer/Documents/classmates/response/admin/picture_new.php",
+		"/Library/WebServer/Documents/classmates/response/get_account_hobby.php",
+		"/Library/WebServer/Documents/classmates/response/submit_account_hobby.php",
 		"/Library/WebServer/Documents/classmates/smarty/admin.tpl",
 		"/Library/WebServer/Documents/classmates/login.php",
 		"/Library/WebServer/Documents/classmates/libs/ajaxupload/ajaxfileupload.js",
 		"/Library/WebServer/Documents/classmates/smarty/modal.tpl",
-		"/Library/WebServer/Documents/classmates/config.php",
-		"/Library/WebServer/Documents/classmates/smarty/header.tpl",
 		"/Volumes/Personal/Project/PHP/classmates/libs/ajaxupload/ajaxfileupload.js",
 		"/Volumes/Personal/Project/PHP/classmates/libs/ajaxupload/ajaxfileupload.php",
 		"/Users/doraemonext/Library/Application Support/Sublime Text 2/Packages/JsFormat/JsFormat.sublime-settings",
@@ -138,99 +133,14 @@
 	"groups":
 	[
 		{
-			"selected": 2,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "smarty/admin/admin_picture.tpl",
-					"settings":
-					{
-						"buffer_size": 2114,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1681,
-								1681
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 260.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "response/admin/picture_new.php",
-					"settings":
-					{
-						"buffer_size": 3930,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								176,
-								176
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 225.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "templates/js/admin/admin.js",
-					"settings":
-					{
-						"buffer_size": 3883,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2873,
-								2873
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/jQuery/Syntaxes/jQueryJavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1080.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 0.0
+		"height": 34.0
 	},
 	"input":
 	{

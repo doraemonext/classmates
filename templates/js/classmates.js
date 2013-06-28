@@ -294,7 +294,7 @@ function submitAccountBasic() {
        type: "POST",
        url: "response/submit_account_basic.php",
        data: {
-           "json": escape(sendData)
+           "json": sendData
        },
        cache: false,
        dataType: "json",
@@ -347,7 +347,7 @@ function submitAccountDetail() {
        type: "POST",
        url: "response/submit_account_detail.php",
        data: {
-           "json": escape(sendData)
+           "json": sendData
        },
        cache: false,
        dataType: "json",
@@ -398,7 +398,7 @@ function submitAccountHobby() {
        type: "POST",
        url: "response/submit_account_hobby.php",
        data: {
-           "json": escape(sendData)
+           "json": sendData
        },
        cache: false,
        dataType: "json",

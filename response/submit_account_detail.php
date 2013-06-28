@@ -13,7 +13,7 @@ require dirname(__FILE__).'/../safe.php';
 require dirname(__FILE__).'/../tools/cookie.php';
 
 $returnValue = array();
-$submit = json_decode(unescape($_POST['json']), true);
+$submit = json_decode($_POST['json'], true);
 
 if (!isset($_SESSION['userCookie'])) {
     $returnValue['status'] = 'ERROR';

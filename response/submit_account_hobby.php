@@ -13,7 +13,7 @@ require dirname(__FILE__).'/../safe.php';
 require dirname(__FILE__).'/../tools/cookie.php';
 
 $returnValue = array();
-$submit = json_decode(unescape($_POST['json']), true);
+$submit = json_decode($_POST['json'], true);
 
 if (!isset($_SESSION['userCookie'])) {
     $returnValue['status'] = 'ERROR';
@@ -52,6 +52,14 @@ for ($i = 0; $i < count($submit); $i++) {
             exit();
     }
 }
+
+$books = addslashes($books);
+$music = addslashes($music);
+$movie = addslashes($movie);
+$brands = addslashes($brands);
+$sports = addslashes($sports);
+$worship = addslashes($worship);
+$others = addslashes($others);
 
 try {
     global $books, $music, $movie, $brands, $sports, $worship, $others;
