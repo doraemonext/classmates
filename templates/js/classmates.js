@@ -117,7 +117,7 @@ function register() {
                $("#register_info").attr("class", "alert alert-success");
                $("#register_info").empty();
                $("#register_info").html("注册成功，正在跳转……");
-//               location.reload();
+               location.reload();
            } else {
                $("#register_info").css("display", "block");
                $("#register_info").attr("class", "alert alert-error");

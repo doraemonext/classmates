@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"MEME",
+				"MEMBER_TOURIST"
+			],
+			[
+				"MEM",
+				"MEMBER_UNVERIFY"
+			],
+			[
 				"jqu",
 				"jQuery.ajax	jQuery.ajax"
 			]
@@ -11,30 +19,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "smarty/admin/admin_picture.tpl",
-			"settings":
-			{
-				"buffer_size": 2114,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "response/admin/picture_new.php",
-			"settings":
-			{
-				"buffer_size": 3930,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "templates/js/admin/admin.js",
-			"settings":
-			{
-				"buffer_size": 3883,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -42,6 +26,10 @@
 		"height": 47.0,
 		"selected_items":
 		[
+			[
+				"Package Control: remo",
+				"Package Control: Remove Package"
+			],
 			[
 				"install",
 				"Package Control: Install Package"
@@ -59,7 +47,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 467.0
+		"width": 602.0
 	},
 	"console":
 	{
@@ -76,7 +64,29 @@
 	},
 	"file_history":
 	[
+		"/Library/WebServer/Documents/classmates/bae/conf.inc.php",
+		"/Library/WebServer/Documents/classmates/bae/sample/simple-start.php",
+		"/Library/WebServer/Documents/classmates/bae/sample/sample.php",
+		"/Library/WebServer/Documents/classmates/functions.php",
+		"/Library/WebServer/Documents/classmates/admin.php",
+		"/Library/WebServer/Documents/classmates/install.sql",
 		"/Library/WebServer/Documents/classmates/smarty/admin.tpl",
+		"/Library/WebServer/Documents/classmates/smarty/admin/admin_setting.tpl",
+		"/Library/WebServer/Documents/classmates/templates/js/admin/admin.js",
+		"/Library/WebServer/Documents/classmates/smarty/admin/admin_motto.tpl",
+		"/Library/WebServer/Documents/classmates/response/admin/picture_new.php",
+		"/Library/WebServer/Documents/classmates/response/admin/user_accept.php",
+		"/Library/WebServer/Documents/classmates/templates/js/classmates.js",
+		"/Library/WebServer/Documents/classmates/smarty/admin/admin_user_admin.tpl",
+		"/Library/WebServer/Documents/classmates/response/admin/submit_setting.php",
+		"/Library/WebServer/Documents/classmates/smarty/admin/admin_picture.tpl",
+		"/Library/WebServer/Documents/classmates/register.php",
+		"/Library/WebServer/Documents/classmates/tools/cookie.php",
+		"/Library/WebServer/Documents/classmates/response/admin/delete_picture.php",
+		"/Library/WebServer/Documents/classmates/response/admin/delete_motto.php",
+		"/Library/WebServer/Documents/classmates/response/admin/motto_new.php",
+		"/Library/WebServer/Documents/classmates/response/admin/modify_motto.php",
+		"/Users/doraemonext/Library/Application Support/Sublime Text 2/Packages/SublimeCodeIntel/Base File.sublime-settings",
 		"/Library/WebServer/Documents/classmates/login.php",
 		"/Library/WebServer/Documents/classmates/libs/ajaxupload/ajaxfileupload.js",
 		"/Library/WebServer/Documents/classmates/smarty/modal.tpl",
@@ -138,103 +148,18 @@
 	"groups":
 	[
 		{
-			"selected": 2,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "smarty/admin/admin_picture.tpl",
-					"settings":
-					{
-						"buffer_size": 2114,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1681,
-								1681
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 260.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "response/admin/picture_new.php",
-					"settings":
-					{
-						"buffer_size": 3930,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								176,
-								176
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 225.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "templates/js/admin/admin.js",
-					"settings":
-					{
-						"buffer_size": 3883,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2873,
-								2873
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/jQuery/Syntaxes/jQueryJavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1080.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 0.0
+		"height": 34.0
 	},
 	"input":
 	{
-		"height": 0.0
+		"height": 31.0
 	},
 	"layout":
 	{
@@ -284,6 +209,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 202.0,
+	"side_bar_width": 241.0,
 	"status_bar_visible": true
 }
