@@ -126,7 +126,7 @@ switch ($action) {
                         $settingSubtitle = $rows->options_value;
                         break;
                     case 'index_writing':
-                        $settingIndexWriting = $rows->options_value;
+                        $settingIndexWriting = htmlspecialchars_decode($rows->options_value);
                         break;
                     default:
                         break;

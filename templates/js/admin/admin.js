@@ -7,9 +7,9 @@ function submitSetting() {
        type: "POST",
        url: "response/admin/submit_setting.php",
        data: {
-           "title": escape(title),
-           "subtitle": escape(subtitle),
-           "indexWriting": escape(indexWriting)
+           "title": title,
+           "subtitle": subtitle,
+           "indexWriting": indexWriting
        },
        cache: false,
        dataType: "json",

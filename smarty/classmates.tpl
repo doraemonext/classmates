@@ -8,7 +8,7 @@
     <div class="row">
         <div class="span12">
             <div class="page-header">
-                <h3>同学录一览</h3>
+                <h3>同学录一览<small>（按姓名首字拼音排序）</small></h3>
             </div>
             <div class="alert alert-error" id="page_across_border" style="display: none;">
                 

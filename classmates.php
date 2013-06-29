@@ -65,7 +65,7 @@ if ($isDisplay) {
                            $_config['db']['password'], $_config['db']['dbname']);
         $query = 'SET NAMES UTF8';
         $db->query($query);
-        $query = 'SELECT `id`, `name`, `privilege` FROM `classmates`';
+        $query = 'SELECT `id`, `name`, `privilege` FROM `classmates` ORDER BY CONVERT(name USING gbk)';
         $result = $db->query($query);
     } catch (Exception $e) {
         echoException($e);

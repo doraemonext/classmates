@@ -29,6 +29,6 @@ try {
     echoException($e);
 }
 
-echo $index_writing;
+echo htmlspecialchars_decode($index_writing);
 
 ?>

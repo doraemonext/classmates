@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"htmlspec",
+				"htmlspecialchars_decode"
+			],
+			[
 				"jqu",
 				"jQuery.ajax	jQuery.ajax"
 			]
@@ -11,6 +15,46 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "response/admin/submit_setting.php",
+			"settings":
+			{
+				"buffer_size": 1871,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/js/admin/admin.js",
+			"settings":
+			{
+				"buffer_size": 9051,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "smarty/admin/admin_setting.tpl",
+			"settings":
+			{
+				"buffer_size": 1046,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "admin.php",
+			"settings":
+			{
+				"buffer_size": 8585,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "response/get_index_writing.php",
+			"settings":
+			{
+				"buffer_size": 825,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -52,6 +96,10 @@
 	},
 	"file_history":
 	[
+		"/Library/WebServer/Documents/classmates/classmates.php",
+		"/Library/WebServer/Documents/classmates/smarty/classmates.tpl",
+		"/Library/WebServer/Documents/classmates/response/get_index_picture.php",
+		"/Library/WebServer/Documents/classmates/account.php",
 		"/Library/WebServer/Documents/classmates/response/get_index_writing.php",
 		"/Library/WebServer/Documents/classmates/index.php",
 		"/Library/WebServer/Documents/classmates/tools/get_options.php",
@@ -61,13 +109,10 @@
 		"/Library/WebServer/Documents/bae/0/templates/js/classmates.js",
 		"/Library/WebServer/Documents/bae/0/admin.php",
 		"/Library/WebServer/Documents/classmates/smarty/header.tpl",
-		"/Library/WebServer/Documents/classmates/classmates.php",
-		"/Library/WebServer/Documents/classmates/account.php",
 		"/Library/WebServer/Documents/classmates/show_picture.php",
 		"/Library/WebServer/Documents/classmates/smarty/show_video.tpl",
 		"/Library/WebServer/Documents/classmates/show_video.php",
 		"/Library/WebServer/Documents/classmates/tools/verify.php",
-		"/Library/WebServer/Documents/classmates/smarty/classmates.tpl",
 		"/Library/WebServer/Documents/classmates/smarty/show_picture.tpl",
 		"/Library/WebServer/Documents/classmates/smarty/admin/admin_picture.tpl",
 		"/Library/WebServer/Documents/classmates/templates/js/admin/admin.js",
@@ -139,8 +184,149 @@
 	"groups":
 	[
 		{
+			"selected": 4,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "response/admin/submit_setting.php",
+					"settings":
+					{
+						"buffer_size": 1871,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1685,
+								1685
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 200.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "templates/js/admin/admin.js",
+					"settings":
+					{
+						"buffer_size": 9051,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								449,
+								449
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "smarty/admin/admin_setting.tpl",
+					"settings":
+					{
+						"buffer_size": 1046,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								540,
+								540
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "admin.php",
+					"settings":
+					{
+						"buffer_size": 8585,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4022,
+								4022
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1620.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "response/get_index_writing.php",
+					"settings":
+					{
+						"buffer_size": 825,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								773,
+								773
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],

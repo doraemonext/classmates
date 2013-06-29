@@ -9,7 +9,6 @@
 require_once dirname(__FILE__).'/../../config.php';
 require_once dirname(__FILE__).'/../../functions.php';
 
-require dirname(__FILE__).'/../../safe.php';
 require dirname(__FILE__).'/../../tools/cookie.php';
 
 $returnValue = array();
@@ -39,9 +38,9 @@ switch ($_SESSION['userPrivilege']) {
         break;
 }
 
-$title = addslashes(unescape($_POST['title']));
-$subtitle = addslashes(unescape($_POST['subtitle']));
-$indexWriting = unescape($_POST['indexWriting']);
+$title = addslashes($_POST['title']);
+$subtitle = addslashes($_POST['subtitle']);
+$indexWriting = htmlspecialchars($_POST['indexWriting']);
 
 try {
     $db = mysqlConnect($_config['db']['host'], $_config['db']['username'],
