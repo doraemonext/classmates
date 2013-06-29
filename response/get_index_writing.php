@@ -13,7 +13,18 @@ require dirname(__FILE__).'/../safe.php';
 require dirname(__FILE__).'/../tools/get_options.php';
 
 try {
-    $index_writing = getOption($_options, 'index_writing');
+    $db = mysqlConnect($_config['db']['host'], $_config['db']['username'],
+                       $_config['db']['password'], $_config['db']['dbname']);
+    $query = 'SET NAMES UTF8';
+    $db->query($query);
+    $query = 'SELECT * FROM `options`';
+    $result = $db->query($query);
+    while ($rows = $result->fetch_object()) {
+    	if ($rows->options_name == "index_writing") {
+    		$index_writing = $rows->options_value;
+    		break;
+    	}
+    }
 } catch (Exception $e) {
     echoException($e);
 }
