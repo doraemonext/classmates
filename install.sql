@@ -1,3 +1,21 @@
+-- phpMyAdmin SQL Dump
+-- version 4.0.4
+-- http://www.phpmyadmin.net
+--
+-- 主机: localhost
+-- 生成日期: 2013 年 07 月 09 日 17:46
+-- 服务器版本: 5.6.12
+-- PHP 版本: 5.3.15
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
 --
 -- 数据库: `classmates`
 --
@@ -38,7 +56,14 @@ CREATE TABLE IF NOT EXISTS `classmates` (
   `hobby_worship` text,
   `hobby_others` text,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+
+--
+-- 转存表中的数据 `classmates`
+--
+
+INSERT INTO `classmates` (`id`, `password`, `privilege`, `banned_reason`, `name`, `birthday`, `sex`, `blood_type`, `residence`, `nation`, `weight`, `height`, `phone_1`, `phone_2`, `phone_3`, `qq`, `email`, `speciality`, `give_others`, `hobby_books`, `hobby_music`, `hobby_movie`, `hobby_sports`, `hobby_brands`, `hobby_worship`, `hobby_others`) VALUES
+(4, '21232f297a57a5a743894a0e4a801fc3', 8, NULL, 'admin', NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -52,6 +77,13 @@ CREATE TABLE IF NOT EXISTS `index_motto` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
 
+--
+-- 转存表中的数据 `index_motto`
+--
+
+INSERT INTO `index_motto` (`id`, `content`) VALUES
+(1, '请在后台修改此处文字');
+
 -- --------------------------------------------------------
 
 --
@@ -62,7 +94,14 @@ CREATE TABLE IF NOT EXISTS `index_picture` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `url` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=23 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=24 ;
+
+--
+-- 转存表中的数据 `index_picture`
+--
+
+INSERT INTO `index_picture` (`id`, `url`) VALUES
+(23, 'images/index_picture/ef1ef71e75fb63f03c0d1b0bf8782441.JPG');
 
 -- --------------------------------------------------------
 
@@ -76,3 +115,16 @@ CREATE TABLE IF NOT EXISTS `options` (
   `options_value` text,
   PRIMARY KEY (`options_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- 转存表中的数据 `options`
+--
+
+INSERT INTO `options` (`options_id`, `options_name`, `options_value`) VALUES
+(1, 'title', 'CLASSMATE'),
+(2, 'subtitle', 'SUBTITLE'),
+(3, 'index_writing', '请在后台修改此处的话语');
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
